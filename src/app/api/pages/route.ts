@@ -10,9 +10,39 @@ export async function GET(request: Request) {
     const id = searchParams.get("id");
 
     if (id) {
-      const page = await prisma.page.findUnique({
+      let page = await prisma.page.findUnique({
         where: { id },
       });
+      if (!page) {
+        const product = await prisma.product.findUnique({
+          where: { id },
+          include: { 
+            images: { orderBy: { order: "asc" } },
+            category: true,
+          },
+        });
+        if (product) {
+          page = {
+            id: product.id,
+            slug: `products/${product.category.slug}/${product.slug}`,
+            title: product.name,
+            content: product.description,
+            gjsHtml: product.gjsHtml,
+            gjsCss: product.gjsCss,
+            gjsData: product.gjsData,
+            isBuilderPage: product.isBuilderPage,
+            metaTitle: product.metaTitle,
+            metaDesc: product.metaDesc,
+            updatedAt: product.updatedAt,
+            images: product.images,
+            moq: product.moq,
+            leadTime: product.leadTime,
+            fabric: product.fabric,
+            sizes: product.sizes,
+            colors: product.colors,
+          } as any;
+        }
+      }
       if (!page) {
         return NextResponse.json({ error: "Page not found" }, { status: 404 });
       }
@@ -92,12 +122,31 @@ export async function PATCH(request: Request) {
       dataToUpdate.content = gjsHtml;
     }
 
-    const page = await prisma.page.update({
+    const page = await prisma.page.findUnique({ where: { id } });
+    if (!page) {
+      const product = await prisma.product.findUnique({ where: { id } });
+      if (product) {
+        const productUpdate = await prisma.product.update({
+          where: { id },
+          data: {
+            gjsHtml,
+            gjsCss,
+            gjsData,
+            isBuilderPage,
+            description: content || product.description,
+          },
+        });
+        return NextResponse.json(productUpdate);
+      }
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
+
+    const updatedPage = await prisma.page.update({
       where: { id },
       data: dataToUpdate,
     });
 
-    return NextResponse.json(page);
+    return NextResponse.json(updatedPage);
   } catch (error) {
     console.error("Update page error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

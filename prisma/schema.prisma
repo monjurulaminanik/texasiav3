@@ -52,11 +52,15 @@ model Product {
   colors      String?
   metaTitle   String?
   metaDesc    String?
-  isFeatured  Boolean        @default(false)
-  isActive    Boolean        @default(true)
-  images      ProductImage[]
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+  isFeatured    Boolean        @default(false)
+  isActive      Boolean        @default(true)
+  images        ProductImage[]
+  gjsHtml       String?
+  gjsCss        String?
+  gjsData       String?
+  isBuilderPage Boolean        @default(false)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 
   @@index([categoryId])
   @@index([isActive, isFeatured])

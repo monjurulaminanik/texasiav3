@@ -204,8 +204,13 @@ async function main() {
   }
   console.log("Seeded 81 Products with 162 associated images successfully");
 
-  // 5. Seed 7 Static Pages (5 original + 2 new: About Us, Services)
+  // 5. Seed 8 Static Pages (including Homepage, About Us, Services)
   const pagesData = [
+    {
+      slug: "home",
+      title: "Homepage",
+      content: `<h2>Welcome to Texasia International Fashion Co., Ltd.</h2><p>Use the visual page builder in the admin panel to completely customize this homepage visually using drag-and-drop Elementor Pro-style blocks!</p>`,
+    },
     {
       slug: "profile",
       title: "Company Profile",
@@ -352,7 +357,7 @@ async function main() {
       },
     });
   }
-  console.log("Seeded 7 Static Pages successfully");
+  console.log("Seeded 8 Static Pages successfully");
 
   // 6. Seed 12 Blog Posts (5 original + 7 new from blueprint)
   const blogsData = [
@@ -895,7 +900,7 @@ async function main() {
   console.log("   → Site Settings updated with real contact info");
   console.log("   → 27 Product Categories");
   console.log("   → 81 Products (162 images)");
-  console.log("   → 7 Static Pages (incl. About Us & Services)");
+  console.log("   → 8 Static Pages (incl. Homepage, About Us & Services)");
   console.log("   → 12 Blog Posts (incl. 7 from blueprint)");
   console.log("   → 25 FAQs");
   console.log("   → 6 Job Listings");

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import DataTable from "@/components/admin/DataTable";
-import { Plus, Edit, Trash2, ToggleLeft, ToggleRight, Star, Loader2, ArrowRight } from "lucide-react";
+import { Plus, Edit, Trash2, ToggleLeft, ToggleRight, Star, Loader2, ArrowRight, Eye } from "lucide-react";
 import { toast } from "sonner";
 
 interface Product {
@@ -239,18 +239,25 @@ export default function AdminProductsPage() {
             actions={(row) => (
               <div className="flex items-center justify-end gap-2">
                 <Link
-                  href={`/admin/products/${row.id}/edit`}
-                  className="p-1.5 rounded bg-[#0b2545] text-slate-300 hover:text-white border border-[#0f2545] hover:border-[#d4a574]/30 transition-premium cursor-pointer"
-                  title="Edit Product"
+                  href={`/admin/page-builder/${row.id}`}
+                  className="p-1.5 rounded bg-amber-950/60 text-amber-400 hover:text-amber-300 border border-amber-900/50 hover:bg-amber-900 transition-premium cursor-pointer flex items-center gap-1.5 text-[11px] font-bold"
+                  title="Visual Page Builder"
                 >
-                  <Edit className="w-4 h-4" />
+                  <Eye className="w-4 h-4" /> Visual Builder
+                </Link>
+                <Link
+                  href={`/admin/products/${row.id}/edit`}
+                  className="p-1.5 rounded bg-[#0b2545] text-slate-300 hover:text-white border border-[#0f2545] hover:border-[#d4a574]/30 transition-premium cursor-pointer flex items-center gap-1.5 text-[11px] font-bold"
+                  title="Edit Specs"
+                >
+                  <Edit className="w-4 h-4" /> Specs
                 </Link>
                 <button
                   onClick={() => handleDelete(row.id)}
-                  className="p-1.5 rounded bg-rose-950/60 text-rose-400 hover:text-rose-300 border border-rose-900/50 hover:bg-rose-900 transition-premium cursor-pointer"
+                  className="p-1.5 rounded bg-rose-950/60 text-rose-400 hover:text-rose-300 border border-rose-900/50 hover:bg-rose-900 transition-premium cursor-pointer flex items-center gap-1.5 text-[11px] font-bold"
                   title="Delete Product"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-4 h-4" /> Delete
                 </button>
               </div>
             )}

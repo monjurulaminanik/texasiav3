@@ -6,10 +6,10 @@ import slugify from "slugify";
 // GET: Fetch a single product by ID
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     const product = await prisma.product.findUnique({
       where: { id },
@@ -33,7 +33,7 @@ export async function GET(
 // PATCH: Update a single product by ID (handles image transaction swaps)
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
   if (!session) {
@@ -41,7 +41,7 @@ export async function PATCH(
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     const {
@@ -133,7 +133,7 @@ export async function PATCH(
 // DELETE: Delete a single product by ID
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
   if (!session) {
@@ -141,7 +141,7 @@ export async function DELETE(
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
 
     const existingProduct = await prisma.product.findUnique({
       where: { id },

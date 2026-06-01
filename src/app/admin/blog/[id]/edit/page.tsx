@@ -5,9 +5,9 @@ import prisma from "@/lib/prisma";
 import BlogForm from "@/components/admin/BlogForm";
 
 interface EditBlogPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditBlogPage({ params }: EditBlogPageProps) {
@@ -16,8 +16,9 @@ export default async function EditBlogPage({ params }: EditBlogPageProps) {
     redirect("/admin/login");
   }
 
+  const resolvedParams = await params;
   const post = await prisma.blogPost.findUnique({
-    where: { id: params.id },
+    where: { id: resolvedParams.id },
   });
 
   if (!post) {

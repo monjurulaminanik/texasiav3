@@ -85,6 +85,20 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
     }
   };
 
+  if (product.isBuilderPage && product.gjsHtml) {
+    return (
+      <div className="pt-28 pb-10 min-h-screen bg-[#040d1a]">
+        {/* JSON-LD Structured Data Injection */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <style dangerouslySetInnerHTML={{ __html: product.gjsCss || "" }} />
+        <div dangerouslySetInnerHTML={{ __html: product.gjsHtml }} />
+      </div>
+    );
+  }
+
   return (
     <div className="pt-28 pb-20 space-y-12">
       {/* JSON-LD Structured Data Injection */}

@@ -5,9 +5,9 @@ import prisma from "@/lib/prisma";
 import ProductForm from "@/components/admin/ProductForm";
 
 interface EditProductPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditProductPage({ params }: EditProductPageProps) {
@@ -16,8 +16,9 @@ export default async function EditProductPage({ params }: EditProductPageProps) 
     redirect("/admin/login");
   }
 
+  const resolvedParams = await params;
   const product = await prisma.product.findUnique({
-    where: { id: params.id },
+    where: { id: resolvedParams.id },
     include: {
       images: { orderBy: { order: "asc" } },
     },
