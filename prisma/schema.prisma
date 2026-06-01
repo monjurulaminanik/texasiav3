@@ -148,13 +148,17 @@ model Job {
 }
 
 model Page {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  slug      String   @unique
-  title     String
-  content   String
-  metaTitle String?
-  metaDesc  String?
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug          String   @unique
+  title         String
+  content       String
+  gjsHtml       String?
+  gjsCss        String?
+  gjsData       String?
+  isBuilderPage Boolean  @default(false)
+  metaTitle     String?
+  metaDesc      String?
+  updatedAt     DateTime @updatedAt
 }
 
 model SiteSettings {

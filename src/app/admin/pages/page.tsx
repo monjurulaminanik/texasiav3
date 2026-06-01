@@ -109,7 +109,7 @@ export default function AdminPagesPage() {
   const columns = [
     {
       header: "Page Title",
-      accessor: (row: StaticPage) => (
+      accessor: (row: any) => (
         <div>
           <div className="text-white font-semibold">{row.title}</div>
           <div className="text-xs text-slate-500">/{row.slug}</div>
@@ -117,9 +117,21 @@ export default function AdminPagesPage() {
       ),
     },
     {
+      header: "Design Mode",
+      accessor: (row: any) => (
+        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+          row.isBuilderPage 
+            ? "bg-[#d4a574]/20 text-[#d4a574] border border-[#d4a574]/30"
+            : "bg-slate-800 text-slate-400 border border-slate-700"
+        }`}>
+          {row.isBuilderPage ? "Visual Builder" : "Standard HTML"}
+        </span>
+      ),
+    },
+    {
       header: "Meta Tags",
-      accessor: (row: StaticPage) => (
-        <span className="text-xs text-slate-400 truncate max-w-[250px] inline-block">
+      accessor: (row: any) => (
+        <span className="text-xs text-slate-400 truncate max-w-[180px] inline-block">
           {row.metaTitle || "Default Theme Meta"}
         </span>
       ),
@@ -149,14 +161,20 @@ export default function AdminPagesPage() {
             data={pages}
             searchKey="title"
             searchPlaceholder="Search pages by title..."
-            actions={(row) => (
-              <div className="flex items-center justify-end">
+            actions={(row: any) => (
+              <div className="flex items-center justify-end gap-2">
                 <button
                   onClick={() => handleEdit(row)}
                   className="p-1.5 rounded bg-[#0b2545] text-slate-300 hover:text-white border border-[#0f2545] hover:border-[#d4a574]/30 transition-premium cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
                 >
-                  <Edit className="w-4 h-4" /> Edit Content
+                  <Edit className="w-4 h-4" /> Edit Code
                 </button>
+                <a
+                  href={`/admin/page-builder/${row.id}`}
+                  className="p-1.5 rounded bg-[#d4a574] hover:bg-[#c29463] text-[#040d1a] border border-[#d4a574] transition-premium cursor-pointer flex items-center gap-1.5 text-xs font-bold shadow-md"
+                >
+                  <Edit className="w-4 h-4" /> Visual Builder
+                </a>
               </div>
             )}
           />
