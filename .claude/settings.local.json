@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(Start-Sleep -Seconds 5)",
+      "Bash(Get-Content \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\E--TexAsia\\\\04fcfad7-deb6-418b-b4ab-a323b0c4c194\\\\tasks\\\\bmcu1426k.output\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/about-us)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/services)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/faq)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/news)"
+    ]
+  }
+}

@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TexAsia International Fashion — Premium B2B Garment Manufacturing Portal & Admin CMS
 
-## Getting Started
+This is a production-grade, highly optimized B2B web application for **Texasia International Fashion Co., Ltd.**, a leading custom garment manufacturer based in Dhaka, Bangladesh. Built with **Next.js 15**, **Tailwind CSS v4**, and **Prisma ORM**, this portal provides a stunning public-facing corporate catalog alongside a comprehensive glassmorphic Admin CRM Control Panel.
 
-First, run the development server:
+---
 
+## 🌟 Core Features
+
+### 1. B2B Public Catalog & Sourcing Platform
+- **Comprehensive Product Catalog**: Supports 23 major ready-made garment (RMG) categories and 69 highly detailed products.
+- **Dynamic Mega-Menu**: A sticky glassmorphic navigation header supporting visual megamenu overlays for B2B product categories.
+- **Advanced Lightbox Gallery**: Product pages feature client-side aspect-ratio lightboxes with zoom capabilities.
+- **Corporate Sourcing Profiles**: Modular side-navigated static company sections (Corporate Profile, Why Choose Us, Sustainability, Compliance Accreditations, and Trade Memberships).
+- **Interactive multi-step RFQ Sourcing Wizard**: React Hook Form-powered wizard with a honeypot spam protection blocker allowing procurement managers to submit customized order quotes.
+- **Structured Schema.org Data**: Injects JSON-LD micro-data into product detail pages (`Product`), news pages (`Article`), career positions (`JobPosting`), and FAQ pages (`FAQPage`) for flawless SEO ranking.
+
+### 2. High-Performance Admin CRM Dashboard & CMS
+- **Interactive Sourcing CRM**: RFQ inbox supporting real-time workflow status modifications (New, Contacted, Quoted, Closed), custom internal merched-notes, and custom CSV data exporters.
+- **General Contacts Box**: Manages general communication inquiries.
+- **Direct Category & Product CRUD Forms**: Slide-out drawer design featuring drag-and-drop local image uploading (integrated with local disk `/public/uploads/*` file storage).
+- **Interactive Blog & News CMS**: Direct rich-text article editor backed by Tiptap, cover image uploader, tag filter controls, and read-views tracking.
+- **FAQ Accordion & Job Openings Editor**: CRUD controls to manage recruiting and direct buyer questions.
+- **Settings singleton control panel**: Configures general business phone, emails, and active SMTP server specifications. Includes a real-time Nodemailer transmission trigger to test configurations instantly.
+- **User Credentials Manager**: Supports robust session handling with role control overrides (`admin` vs `editor`).
+
+---
+
+## 🛠️ Technological Architecture
+
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/) utilizing React 19 and strict TypeScript.
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) featuring dynamic glassmorphic backgrounds, premium HSL color tokens, and custom micro-animations.
+- **Database**: [Prisma ORM](https://www.prisma.io/) defaulting locally to a SQLite file db (`dev.db`). The schema is fully compatible with production **PostgreSQL** providers.
+- **Authentication**: [NextAuth.js v5 (Auth.js)](https://authjs.dev/) utilizing secure JWT cookie-based session protection.
+- **Email Delivery**: [Nodemailer](https://nodemailer.com/) dynamically binding to dynamic SMTP credentials configured in the site dashboard.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Installation & Environment Configuration
+Clone the repository and install all dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Configure your environment variables by making a copy of `.env.example`:
+```bash
+cp .env.example .env
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ensure your `.env` contains:
+```env
+DATABASE_URL="file:./dev.db"
+NEXTAUTH_SECRET="your-ultra-secure-random-nextauth-jwt-secret-string-here"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Database Migration & B2B Seed Population
+Generate the local Prisma Client, run SQLite migrations, and populate the database with all 23 categories, 69 products, 15 FAQs, 5 static pages, 5 blogs, and 3 open jobs:
+```bash
+npx prisma migrate dev --name init
+npx prisma db seed
+```
 
-## Learn More
+This will automatically create a secure admin profile with the following default credentials:
+- **Email**: `admin@texasiabd.com`
+- **Password**: `TexasiaAdmin2026!`
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Launch Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the portal, or navigate to [http://localhost:3000/admin](http://localhost:3000/admin) to log in.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Production Deployment (PM2 & PostgreSQL)
 
-## Deploy on Vercel
+### 1. Production PostgreSQL Portability
+To deploy to a production cloud server using PostgreSQL, simply alter the provider inside your environment variables:
+1. Update `prisma/schema.prisma` datasource:
+   ```prisma
+   datasource db {
+     provider = "postgresql"
+     url      = env("DATABASE_URL")
+   }
+   ```
+2. Alter the `DATABASE_URL` in your production `.env` to point to your live PostgreSQL database.
+3. Re-run migrations and seed:
+   ```bash
+   npx prisma migrate deploy
+   npx prisma db seed
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Managing Process via PM2
+To keep the application running persistently:
+```bash
+# Build the production optimized distribution bundle
+npm run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Launch server process via PM2 daemon
+pm2 start npm --name "texasia-b2b-portal" -- start
+```
+
+---
+
+## 🔒 Security & Middleware Details
+NextAuth Edge middleware operates at the HTTP header layer matching session cookie tokens (`next-auth.session-token` / `__Secure-next-auth.session-token`). This bypasses local SQLite and bcrypt Node binary compilation conflicts during Edge environment setups, resulting in extremely fast route protective transitions.
+
+---
+
+## 📝 Document Ownership
+Developed for **Texasia International Fashion Co., Ltd.** under strict B2B compliance. All imagery placeholders route to premium CC0/Unsplash sources optimized for apparel merchandising presentations.
