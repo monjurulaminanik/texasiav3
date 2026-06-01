@@ -10,7 +10,7 @@ interface SendMailOptions {
 export async function sendMail({ to, subject, html }: SendMailOptions) {
   // Always query active SMTP settings dynamically from singleton settings
   const settings = await prisma.siteSettings.findUnique({
-    where: { id: "singleton" },
+    where: { id: "507f1f77bcf86cd799439011" },
   });
 
   if (!settings || !settings.smtpHost || !settings.smtpUser || !settings.smtpPass) {

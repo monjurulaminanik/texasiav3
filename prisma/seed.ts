@@ -22,7 +22,7 @@ async function main() {
 
   // 2. Seed Site Settings Singleton
   await prisma.siteSettings.upsert({
-    where: { id: "singleton" },
+    where: { id: "507f1f77bcf86cd799439011" },
     update: {
       email: "rony@texasia.com",
       phone: "+88 017 367 55 829",
@@ -32,7 +32,7 @@ async function main() {
       footerText: "© 2026 Texasia International Fashion Co., Ltd. All rights reserved. BSCI & SEDEX certified garment manufacturer in Bangladesh.",
     },
     create: {
-      id: "singleton",
+      id: "507f1f77bcf86cd799439011",
       siteName: "Texasia International Fashion Co., Ltd.",
       tagline: "Custom Clothing Manufacturer in Bangladesh",
       logo: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=200&h=80&fit=crop",

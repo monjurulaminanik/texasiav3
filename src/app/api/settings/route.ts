@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 export async function GET() {
   try {
     const settings = await prisma.siteSettings.findUnique({
-      where: { id: "singleton" },
+      where: { id: "507f1f77bcf86cd799439011" },
     });
     return NextResponse.json(settings);
   } catch (error) {
@@ -44,7 +44,7 @@ export async function PATCH(request: Request) {
     }
 
     const settings = await prisma.siteSettings.update({
-      where: { id: "singleton" },
+      where: { id: "507f1f77bcf86cd799439011" },
       data: dataToUpdate,
     });
 

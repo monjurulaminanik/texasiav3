@@ -65,7 +65,7 @@ export async function POST(request: Request) {
     // Try sending notification email if settings have SMTP configured
     try {
       const settings = await prisma.siteSettings.findUnique({
-        where: { id: "singleton" },
+        where: { id: "507f1f77bcf86cd799439011" },
       });
       if (settings && settings.email && settings.smtpHost && settings.smtpUser) {
         // Dynamic importing email helper to avoid bundle size issues
