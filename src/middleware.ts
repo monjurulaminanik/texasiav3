@@ -15,7 +15,8 @@ export function middleware(request: NextRequest) {
     if (!token) {
       const loginUrl = new URL("/admin/login", request.url);
       // Optional: Add redirect param to return after logging in
-      loginUrl.searchParams.set("callbackUrl", pathname);
+      const targetPath = pathname === "/admin" ? "/admin/dashboard" : pathname;
+      loginUrl.searchParams.set("callbackUrl", targetPath);
       return NextResponse.redirect(loginUrl);
     }
   }
