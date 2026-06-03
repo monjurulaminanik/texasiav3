@@ -4,8 +4,11 @@ import { auth } from "@/lib/auth";
 import slugify from "slugify";
 
 // GET: Fetch all active/inactive categories
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const includeProducts = searchParams.get("include") === "products";
+
     const categories = await prisma.category.findMany({
       where: { parentId: null },
       orderBy: { order: "asc" },
@@ -13,6 +16,17 @@ export async function GET() {
         children: {
           orderBy: { order: "asc" },
         },
+        ...(includeProducts && {
+          products: {
+            where: { isActive: true },
+            orderBy: { name: "asc" },
+            select: {
+              id: true,
+              name: true,
+              slug: true,
+            },
+          },
+        }),
       },
     });
     return NextResponse.json(categories);

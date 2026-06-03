@@ -38,7 +38,7 @@ export default function Header() {
   const { data: categories = [] } = useQuery<any[]>({
     queryKey: ["publicCategories"],
     queryFn: async () => {
-      const res = await fetch("/api/categories");
+      const res = await fetch("/api/categories?include=products");
       if (!res.ok) return [];
       const data = await res.json();
       return data.filter((c: any) => c.isActive);
@@ -134,10 +134,10 @@ export default function Header() {
                   setProductsDropdownOpen(false);
                   setActiveCategoryId(null);
                 }}
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-white text-[#040d1a] border border-gray-200 shadow-2xl flex animate-in fade-in duration-200"
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-white text-[#040d1a] border border-gray-200 shadow-2xl flex animate-in fade-in duration-200 rounded-xl overflow-hidden"
               >
                 {/* Left Sidebar: Main Categories */}
-                <div className="w-1/3 border-r border-gray-200 bg-gray-50 flex flex-col py-2">
+                <div className="w-1/3 border-r border-gray-200 bg-gray-50 flex flex-col py-2 max-h-[450px] overflow-y-auto">
                   {categories.map((cat: any) => (
                     <Link
                       key={cat.id}
@@ -148,26 +148,54 @@ export default function Header() {
                       }`}
                     >
                       {cat.name}
-                      {cat.children && cat.children.length > 0 && (
+                      {(cat.children?.length > 0 || cat.products?.length > 0) && (
                         <ArrowRight className={`w-3 h-3 ${activeCategoryId === cat.id ? "text-[#e63946]" : "text-gray-400 group-hover:text-gray-700"}`} />
                       )}
                     </Link>
                   ))}
                 </div>
                 
-                {/* Right Pane: Subcategories */}
-                <div className="w-2/3 p-6 bg-white min-h-[300px]">
+                {/* Right Pane: Subcategories or Products */}
+                <div className="w-2/3 p-6 bg-white max-h-[450px] overflow-y-auto min-h-[300px]">
                   {categories.find((c: any) => c.id === activeCategoryId)?.children?.length > 0 ? (
-                    <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-                      {categories.find((c: any) => c.id === activeCategoryId)?.children?.map((subCat: any) => (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Subcategories</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-y-3 gap-x-6">
+                        {categories.find((c: any) => c.id === activeCategoryId)?.children?.map((subCat: any) => (
+                          <Link
+                            key={subCat.id}
+                            href={`/products/${subCat.slug}`}
+                            className="text-sm font-medium text-gray-600 hover:text-[#e63946] transition-colors"
+                          >
+                            {subCat.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : categories.find((c: any) => c.id === activeCategoryId)?.products?.length > 0 ? (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Products (A-Z)</span>
                         <Link
-                          key={subCat.id}
-                          href={`/products/${subCat.slug}`}
-                          className="text-sm font-medium text-gray-600 hover:text-[#e63946] transition-colors"
+                          href={`/products/${categories.find((c: any) => c.id === activeCategoryId)?.slug}`}
+                          className="text-xs font-bold text-[#e63946] hover:underline"
                         >
-                          {subCat.name}
+                          View All
                         </Link>
-                      ))}
+                      </div>
+                      <div className="grid grid-cols-2 gap-y-3 gap-x-6">
+                        {categories.find((c: any) => c.id === activeCategoryId)?.products?.map((prod: any) => (
+                          <Link
+                            key={prod.id}
+                            href={`/products/${categories.find((c: any) => c.id === activeCategoryId)?.slug}/${prod.slug}`}
+                            className="text-sm font-medium text-gray-600 hover:text-[#e63946] transition-colors"
+                          >
+                            {prod.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   ) : activeCategoryId ? (
                     <div className="h-full flex flex-col items-center justify-center text-gray-400">
