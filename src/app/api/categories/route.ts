@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     const includeProducts = searchParams.get("include") === "products";
 
     const categories = await prisma.category.findMany({
-      where: { parentId: null },
+      where: { parent: null },
       orderBy: { order: "asc" },
       include: {
         children: {
