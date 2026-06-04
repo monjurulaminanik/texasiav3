@@ -20,6 +20,19 @@ async function main() {
   });
   console.log("Seeded Admin User:", adminUser.email);
 
+  const readmeAdminPasswordHash = await bcrypt.hash("TexasiaAdmin2026!", 12);
+  const readmeAdminUser = await prisma.user.upsert({
+    where: { email: "admin@texasiabd.com" },
+    update: {},
+    create: {
+      email: "admin@texasiabd.com",
+      password: readmeAdminPasswordHash,
+      name: "Texasia Admin",
+      role: "admin",
+    },
+  });
+  console.log("Seeded README Admin User:", readmeAdminUser.email);
+
   // 2. Seed Site Settings Singleton
   await prisma.siteSettings.upsert({
     where: { id: "507f1f77bcf86cd799439011" },
