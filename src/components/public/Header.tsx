@@ -68,14 +68,10 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#0b2545] to-[#d4a574] p-[1px] flex items-center justify-center shadow-lg">
-            <div className="w-full h-full bg-[#040d1a] rounded-[10px] flex items-center justify-center">
-              <span className="text-[#d4a574] text-sm font-black font-heading tracking-tighter">TX</span>
-            </div>
-          </div>
+          <img src="/logo.jpeg" alt="QSA Apparels Logo" className="h-10 w-auto rounded-md bg-white object-contain" />
           <div className="flex flex-col">
-            <span className="font-bold text-white font-heading text-sm tracking-tight leading-none">Texasia</span>
-            <span className="text-[9px] text-[#d4a574] tracking-widest font-black uppercase mt-0.5">International</span>
+            <span className="font-bold text-white font-heading text-sm tracking-tight leading-none">QSA</span>
+            <span className="text-[9px] text-[#d4a574] tracking-widest font-black uppercase mt-0.5">Apparels</span>
           </div>
         </Link>
 
@@ -120,20 +116,19 @@ export default function Header() {
           </div>
 
           {/* Products mega menu dropdown */}
-          <div className="relative">
-            <button
+          <div className="relative" onMouseLeave={() => {
+            setProductsDropdownOpen(false);
+            setActiveCategoryId(null);
+          }}>
+            <Link
+              href="/products"
               onMouseEnter={() => setProductsDropdownOpen(true)}
-              onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
               className="flex items-center gap-1 text-sm font-semibold text-slate-200 hover:text-[#d4a574] transition-premium focus:outline-none cursor-pointer"
             >
               PRODUCTS <ChevronDown className="w-4 h-4" />
-            </button>
+            </Link>
             {productsDropdownOpen && (
               <div
-                onMouseLeave={() => {
-                  setProductsDropdownOpen(false);
-                  setActiveCategoryId(null);
-                }}
                 className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-white text-[#040d1a] border border-gray-200 shadow-2xl flex animate-in fade-in duration-200 rounded-xl overflow-hidden"
               >
                 {/* Left Sidebar: Main Categories */}

@@ -28,15 +28,23 @@ export default function PopupRfqForm() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // If we are on the homepage, show it almost immediately (e.g. 1.5 seconds)
-    // Only once per page load to not be overwhelmingly annoying if they just route away and back
+    // If we are on the homepage, check if 6 minutes have passed since last shown
     if (pathname === "/" && !hasShown) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        setHasShown(true);
-      }, 1500);
+      const lastShown = localStorage.getItem("rfqPopupLastShown");
+      const now = Date.now();
+      const sixMinutes = 6 * 60 * 1000;
 
-      return () => clearTimeout(timer);
+      if (!lastShown || now - parseInt(lastShown, 10) > sixMinutes) {
+        const timer = setTimeout(() => {
+          setIsOpen(true);
+          setHasShown(true);
+          localStorage.setItem("rfqPopupLastShown", now.toString());
+        }, 1500);
+
+        return () => clearTimeout(timer);
+      } else {
+        setHasShown(true); // Prevent checking again this session
+      }
     }
   }, [pathname, hasShown]);
 

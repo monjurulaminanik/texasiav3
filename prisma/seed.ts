@@ -20,14 +20,14 @@ async function main() {
   });
   console.log("Seeded Admin User:", adminUser.email);
 
-  const readmeAdminPasswordHash = await bcrypt.hash("TexasiaAdmin2026!", 12);
+  const readmeAdminPasswordHash = await bcrypt.hash("QSAAdmin2026!", 12);
   const readmeAdminUser = await prisma.user.upsert({
     where: { email: "admin@texasiabd.com" },
     update: {},
     create: {
       email: "admin@texasiabd.com",
       password: readmeAdminPasswordHash,
-      name: "Texasia Admin",
+      name: "QSA Admin",
       role: "admin",
     },
   });
@@ -42,11 +42,11 @@ async function main() {
       whatsapp: "+8801736755829",
       address: "House 45, Road 12, Mirpur DOHS, Dhaka, Bangladesh",
       tagline: "Custom Clothing Manufacturer in Bangladesh",
-      footerText: "© 2026 Texasia International Fashion Co., Ltd. All rights reserved. BSCI & SEDEX certified garment manufacturer in Bangladesh.",
+      footerText: "© 2026 QSA Apparels (Quadra Source Apparals) All rights reserved. BSCI & SEDEX certified garment manufacturer in Bangladesh.",
     },
     create: {
       id: "507f1f77bcf86cd799439011",
-      siteName: "Texasia International Fashion Co., Ltd.",
+      siteName: "QSA Apparels (Quadra Source Apparals)",
       tagline: "Custom Clothing Manufacturer in Bangladesh",
       logo: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=200&h=80&fit=crop",
       favicon: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=32&h=32&fit=crop",
@@ -58,12 +58,12 @@ async function main() {
       linkedin: "https://linkedin.com/company/texasiafashion",
       instagram: "https://instagram.com/texasiafashion",
       youtube: "https://youtube.com/texasiafashion",
-      footerText: "© 2026 Texasia International Fashion Co., Ltd. All rights reserved. BSCI & SEDEX certified garment manufacturer in Bangladesh.",
+      footerText: "© 2026 QSA Apparels (Quadra Source Apparals) All rights reserved. BSCI & SEDEX certified garment manufacturer in Bangladesh.",
       smtpHost: "smtp.mailtrap.io",
       smtpPort: 2525,
       smtpUser: "dev-smtp-user",
       smtpPass: "dev-smtp-pass",
-      smtpFromName: "Texasia Notifications",
+      smtpFromName: "QSA Notifications",
       smtpFromAddr: "noreply@texasia.com",
     },
   });
@@ -104,7 +104,7 @@ async function main() {
 
   for (let i = 0; i < categoriesData.length; i++) {
     const item = categoriesData[i];
-    const desc = `Our premium, high-capacity sourcing and manufacturing lines for ${item.name} represent the pinnacle of cost-effective apparel engineering. Manufactured in our LEED-certified factories in Dhaka, Bangladesh, we blend certified raw materials with cutting-edge automated cutting, sewing, and detailing facilities. We specialize in catering to international apparel brands, wholesale importers, private labels, and e-commerce startups. By utilizing a robust supply chain network, we procure top-tier yarn, fabric blends, eco-friendly organic dyes, and durable hardware. We accommodate custom OEM/ODM designs and provide complete private labeling services with flexible minimum order quantities starting at just 500 pieces. Every production batch undergoes comprehensive pre-production, inline, and final quality control processes to ensure compliance with strict BSCI, WRAP, SEDEX, and OEKO-TEX standards. Partner with Texasia International to scale your clothing brand's ${item.name} requirements with predictable lead times, premium finishing, and sustainable sourcing solutions.`;
+    const desc = `Our premium, high-capacity sourcing and manufacturing lines for ${item.name} represent the pinnacle of cost-effective apparel engineering. Manufactured in our LEED-certified factories in Dhaka, Bangladesh, we blend certified raw materials with cutting-edge automated cutting, sewing, and detailing facilities. We specialize in catering to international apparel brands, wholesale importers, private labels, and e-commerce startups. By utilizing a robust supply chain network, we procure top-tier yarn, fabric blends, eco-friendly organic dyes, and durable hardware. We accommodate custom OEM/ODM designs and provide complete private labeling services with flexible minimum order quantities starting at just 500 pieces. Every production batch undergoes comprehensive pre-production, inline, and final quality control processes to ensure compliance with strict BSCI, WRAP, SEDEX, and OEKO-TEX standards. Partner with QSA Apparels to scale your clothing brand's ${item.name} requirements with predictable lead times, premium finishing, and sustainable sourcing solutions.`;
 
     const category = await prisma.category.upsert({
       where: { slug: item.slug },
@@ -114,7 +114,7 @@ async function main() {
         slug: item.slug,
         description: desc,
         heroImage: `https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&h=500&fit=crop&q=80&sig=${i}`,
-        metaTitle: `Premium Custom ${item.name} Manufacturer in Bangladesh | Texasia`,
+        metaTitle: `Premium Custom ${item.name} Manufacturer in Bangladesh | QSA`,
         metaDesc: `Wholesale custom ${item.name} manufacturer in Bangladesh. BSCI & SEDEX certified, low MOQ 500 pcs, OEM/ODM/Private Label. Request a free quote today!`,
         order: i,
         isActive: true,
@@ -147,7 +147,7 @@ async function main() {
 
       const shortDesc = `Our high-performance ${pName} is manufactured with extreme care for premium retail brands, wholesalers, and corporate private labels seeking supreme styling, comfort, and sustainable sourcing.`;
 
-      const description = `This premium grade ${pName} is engineered specifically for global commercial partners, luxury retail labels, and high-growth e-commerce ventures looking for unparalleled manufacturing quality from Dhaka, Bangladesh. We source our standard fibers from organic certified farms and apply modern ring-spun processing, ensuring a smooth surface optimal for branding, custom sublimation, and detailed prints. The structural integrity is reinforced via double-needle bottom stitching and flatlock flat seams to satisfy rigorous B2B durability testing. Each batch is custom-treated with premium finishes to elevate moisture-wicking capability and touch softness. We support complete private labeling, including custom-printed heat-transfer neck tags, custom woven side labels, and custom biodegradable shipping bags. By combining advanced industrial machinery with a highly skilled workforce, Texasia International guarantees unmatched aesthetic consistency, low MOQs, and dependable bulk export logistics directly to your global warehouses in USA, EU, or UK.`;
+      const description = `This premium grade ${pName} is engineered specifically for global commercial partners, luxury retail labels, and high-growth e-commerce ventures looking for unparalleled manufacturing quality from Dhaka, Bangladesh. We source our standard fibers from organic certified farms and apply modern ring-spun processing, ensuring a smooth surface optimal for branding, custom sublimation, and detailed prints. The structural integrity is reinforced via double-needle bottom stitching and flatlock flat seams to satisfy rigorous B2B durability testing. Each batch is custom-treated with premium finishes to elevate moisture-wicking capability and touch softness. We support complete private labeling, including custom-printed heat-transfer neck tags, custom woven side labels, and custom biodegradable shipping bags. By combining advanced industrial machinery with a highly skilled workforce, QSA Apparels guarantees unmatched aesthetic consistency, low MOQs, and dependable bulk export logistics directly to your global warehouses in USA, EU, or UK.`;
 
       const product = await prisma.product.upsert({
         where: { slug: pSlug },
@@ -167,7 +167,7 @@ async function main() {
               : "100% GOTS Certified Organic Cotton",
           sizes: "S, M, L, XL, XXL, 3XL",
           colors: "Jet Black, Classic White, Slate Gray, Navy Blue, Forest Green",
-          metaTitle: `${pName} Wholesale Manufacturer | Texasia`,
+          metaTitle: `${pName} Wholesale Manufacturer | QSA`,
           metaDesc: `Order custom bulk ${pName} from certified factory. 500 pcs low MOQ, full OEM/ODM specs, international logistics. Get a quick quote!`,
           isFeatured: pNum === 1,
           isActive: true,
@@ -189,7 +189,7 @@ async function main() {
               : "100% GOTS Certified Organic Cotton",
           sizes: "S, M, L, XL, XXL, 3XL",
           colors: "Jet Black, Classic White, Slate Gray, Navy Blue, Forest Green",
-          metaTitle: `${pName} Wholesale Manufacturer | Texasia`,
+          metaTitle: `${pName} Wholesale Manufacturer | QSA`,
           metaDesc: `Order custom bulk ${pName} from certified factory. 500 pcs low MOQ, full OEM/ODM specs, international logistics. Get a quick quote!`,
           isFeatured: pNum === 1,
           isActive: true,
@@ -222,17 +222,17 @@ async function main() {
     {
       slug: "home",
       title: "Homepage",
-      content: `<h2>Welcome to Texasia International Fashion Co., Ltd.</h2><p>Use the visual page builder in the admin panel to completely customize this homepage visually using drag-and-drop Elementor Pro-style blocks!</p>`,
+      content: `<h2>Welcome to QSA Apparels (Quadra Source Apparals)</h2><p>Use the visual page builder in the admin panel to completely customize this homepage visually using drag-and-drop Elementor Pro-style blocks!</p>`,
     },
     {
       slug: "profile",
       title: "Company Profile",
-      content: `<h2>About Texasia International Fashion Co., Ltd.</h2>
-<p>Texasia International Fashion Co., Ltd. is a premier readymade garment (RMG) manufacturer, supplier, and vertical sourcing agent established in 2010. Headquartered in Dhaka's prestigious Mirpur DOHS, Bangladesh, we serve as the vital bridge connecting discerning global apparel brands with premium, socially responsible apparel production.</p>
+      content: `<h2>About QSA Apparels (Quadra Source Apparals)</h2>
+<p>QSA Apparels (Quadra Source Apparals) is a premier readymade garment (RMG) manufacturer, supplier, and vertical sourcing agent established in 2010. Headquartered in Dhaka's prestigious Mirpur DOHS, Bangladesh, we serve as the vital bridge connecting discerning global apparel brands with premium, socially responsible apparel production.</p>
 <p>Our operational footprint encompasses a state-of-the-art LEED Gold certified manufacturing facility housing over 800 to 1,000 highly trained technicians, merchandisers, pattern makers, and garment workers. With a massive monthly output capacity exceeding 2 million high-quality pieces, we execute complex OEM (Original Equipment Manufacturer), ODM (Original Design Manufacturer), and specialized private label orders with impeccable visual and dimensional precision.</p>
 <h3>Our Sourcing Infrastructure</h3>
 <p>Over the past decade, we have established a highly resilient, fully integrated supply chain ecosystem. We partner with the region's finest spinning mills and knitting houses to secure standard, sustainable, and organic yarn blends. This localized supply network enables us to maintain absolute quality control while offering incredibly competitive pricing, fast prototyping, and flexible production lifecycles.</p>
-<p>Our core services range from initial custom conceptualization, fast fashion sampling, digital pattern drafting, in-house bulk fabric dyeing, automated precise cutting, assembly, standard finishing, and robust global shipping. Whether you are an established high-street fashion conglomerate, a growing retail boutique chain, or an emerging e-commerce disruptor, Texasia International is your trusted gateway to world-class apparel manufacturing.</p>
+<p>Our core services range from initial custom conceptualization, fast fashion sampling, digital pattern drafting, in-house bulk fabric dyeing, automated precise cutting, assembly, standard finishing, and robust global shipping. Whether you are an established high-street fashion conglomerate, a growing retail boutique chain, or an emerging e-commerce disruptor, QSA Apparels is your trusted gateway to world-class apparel manufacturing.</p>
 <h3>Our Clients</h3>
 <p>We proudly serve importers, wholesalers, retailers, established brands, private labels, boutiques, sourcing agents, and e-commerce sellers across Europe, USA, UK, Canada, Australia, and the Middle East.</p>`,
     },
@@ -240,7 +240,7 @@ async function main() {
       slug: "why-choose-us",
       title: "Why Choose Us",
       content: `<h2>Partnering with Bangladesh's Premier Garment Partner</h2>
-<p>At Texasia International Fashion Co., Ltd., we recognize the unique competitive challenges confronting global apparel retailers today. Modern apparel brands must navigate volatile consumer trends, demanding shipping windows, strict compliance audits, and rising fabric costs. Here is why international buyers trust us with their critical product manufacturing:</p>
+<p>At QSA Apparels (Quadra Source Apparals), we recognize the unique competitive challenges confronting global apparel retailers today. Modern apparel brands must navigate volatile consumer trends, demanding shipping windows, strict compliance audits, and rising fabric costs. Here is why international buyers trust us with their critical product manufacturing:</p>
 <ul>
   <li><strong>Unrivaled Professional Experience:</strong> Over 15 years of industry-leading experience exporting premium garments to the USA, EU, UK, and Asian markets.</li>
   <li><strong>Ethical Low MOQs:</strong> We support global startups and custom capsule collections by offering flexible MOQs beginning at just 500 pieces per style/color.</li>
@@ -258,7 +258,7 @@ async function main() {
       slug: "sustainability",
       title: "Sustainability & Green Commitment",
       content: `<h2>Eco-Friendly Apparel Manufacturing for a Greener Tomorrow</h2>
-<p>As the second-largest apparel exporting nation globally, Bangladesh has a unique responsibility to champion ecological preservation. At Texasia International Fashion Co., Ltd., sustainability is not merely a marketing keyword; it is a foundational pillar woven into our daily corporate manufacturing philosophy.</p>
+<p>As the second-largest apparel exporting nation globally, Bangladesh has a unique responsibility to champion ecological preservation. At QSA Apparels (Quadra Source Apparals), sustainability is not merely a marketing keyword; it is a foundational pillar woven into our daily corporate manufacturing philosophy.</p>
 <p>Our LEED Gold certified facilities incorporate the industry's most advanced clean production technologies. We operate a highly sophisticated Biological Effluent Treatment Plant (ETP) that filters and neutralizes chemical waste, ensuring zero harmful runoffs enter our precious local waterways. Furthermore, we harvest rainwater for washing processes and utilize advanced greywater recycling systems to reduce our clean groundwater footprint by over 45% compared to traditional dyeing houses.</p>
 <h3>Conscious Raw Material Sourcing</h3>
 <p>We offer our clients an extensive selection of eco-conscious, certified raw materials:</p>
@@ -274,7 +274,7 @@ async function main() {
       slug: "accreditation",
       title: "Certifications & Accreditation",
       content: `<h2>Globally Recognized Compliance, Quality, and Social Safety Standards</h2>
-<p>In the global apparel manufacturing industry, international compliance and regulatory certifications are the absolute cornerstones of buyer confidence. Texasia International Fashion Co., Ltd. is proud to be recognized as one of Bangladesh's most compliant, audited, and certified apparel manufacturing hubs.</p>
+<p>In the global apparel manufacturing industry, international compliance and regulatory certifications are the absolute cornerstones of buyer confidence. QSA Apparels (Quadra Source Apparals) is proud to be recognized as one of Bangladesh's most compliant, audited, and certified apparel manufacturing hubs.</p>
 <p>We undergo regular, comprehensive third-party audits to maintain our status as a socially responsible garment manufacturer. Our active accreditations include:</p>
 <ul>
   <li><strong>BSCI (Business Social Compliance Initiative):</strong> Guaranteeing fair compensation, legal working hours, zero child labor, gender equality, and safe working conditions.</li>
@@ -284,13 +284,13 @@ async function main() {
   <li><strong>ISO 9001:2015:</strong> Documenting our operational adherence to top-tier, international quality management and manufacturing control processes.</li>
 </ul>
 <h3>Our Commitment to Social Welfare</h3>
-<p>Beyond standard certifications, we run extensive internal social welfare initiatives. We provide all factory personnel with fully funded medical checks, subsidized clean meals, free children's daycare services, and comprehensive fire-safety drill training programs. At Texasia International, we believe that high-quality clothing can only be assembled by a highly respected, safe, and happy workforce.</p>`,
+<p>Beyond standard certifications, we run extensive internal social welfare initiatives. We provide all factory personnel with fully funded medical checks, subsidized clean meals, free children's daycare services, and comprehensive fire-safety drill training programs. At QSA Apparels, we believe that high-quality clothing can only be assembled by a highly respected, safe, and happy workforce.</p>`,
     },
     {
       slug: "membership",
       title: "Corporate Memberships",
       content: `<h2>Active Participation in Global Apparel & Trade Networks</h2>
-<p>Texasia International Fashion Co., Ltd. maintains strong structural ties with major national and international apparel trade bodies, export chambers, and global industry research institutes. These professional memberships keep us at the very vanguard of international import-export legislation, custom duty changes, and sustainable apparel design innovations.</p>
+<p>QSA Apparels (Quadra Source Apparals) maintains strong structural ties with major national and international apparel trade bodies, export chambers, and global industry research institutes. These professional memberships keep us at the very vanguard of international import-export legislation, custom duty changes, and sustainable apparel design innovations.</p>
 <p>We are proud, active, and contributing members of the following elite organizations:</p>
 <ul>
   <li><strong>BGMEA (Bangladesh Garment Manufacturers and Exporters Association):</strong> The premier national trade association regulating RMG exports, providing regular industry research, custom clearance protocols, and worker training resources.</li>
@@ -305,10 +305,10 @@ async function main() {
       slug: "about-us",
       title: "About Us",
       content: `<h2>Our Story — Building Bangladesh's Most Trusted Garment Partner</h2>
-<p>Texasia International Fashion Co., Ltd. was founded with a single, unwavering mission: to make world-class garment manufacturing accessible to every apparel brand, wholesale importer, and private label entrepreneur on the globe. What started as a boutique sourcing consultancy in 2010 has grown into one of Bangladesh's most respected, certified, and vertically integrated readymade garment manufacturers.</p>
+<p>QSA Apparels (Quadra Source Apparals) was founded with a single, unwavering mission: to make world-class garment manufacturing accessible to every apparel brand, wholesale importer, and private label entrepreneur on the globe. What started as a boutique sourcing consultancy in 2010 has grown into one of Bangladesh's most respected, certified, and vertically integrated readymade garment manufacturers.</p>
 <h3>Our Founder</h3>
-<p>Texasia is led by <strong>Rahamatullah Rony</strong>, a passionate RMG industry veteran with over 10 years of hands-on experience across the full garment manufacturing value chain. Having worked across leading export-oriented factories in Dhaka as a merchandiser, production coordinator, and quality auditor, Rony founded Texasia with a deep technical understanding of what global apparel buyers truly need: consistent quality, transparent compliance, reliable timelines, and honest pricing.</p>
-<p>Rony's direct accessibility sets Texasia apart from faceless factory corporations. You can reach him personally at <strong>rony@texasia.com</strong> or <strong>+88 017 367 55 829</strong>.</p>
+<p>QSA is led by <strong>Rahamatullah Rony</strong>, a passionate RMG industry veteran with over 10 years of hands-on experience across the full garment manufacturing value chain. Having worked across leading export-oriented factories in Dhaka as a merchandiser, production coordinator, and quality auditor, Rony founded QSA with a deep technical understanding of what global apparel buyers truly need: consistent quality, transparent compliance, reliable timelines, and honest pricing.</p>
+<p>Rony's direct accessibility sets QSA apart from faceless factory corporations. You can reach him personally at <strong>rony@texasia.com</strong> or <strong>+88 017 367 55 829</strong>.</p>
 <h3>Our Vision</h3>
 <p>To be the world's most trusted B2B garment manufacturing and sourcing partner — recognized for uncompromising quality, radical transparency, and sustainable production practices that uplift both our clients and our community.</p>
 <h3>Our Mission</h3>
@@ -322,7 +322,7 @@ async function main() {
       slug: "services",
       title: "Our Services",
       content: `<h2>End-to-End Garment Manufacturing & Sourcing Services</h2>
-<p>Texasia International Fashion Co., Ltd. offers a comprehensive suite of B2B apparel manufacturing and sourcing services designed to support your brand at every stage — from initial concept to final warehouse delivery. Our vertically integrated operations eliminate middlemen, reduce lead times, and guarantee consistent quality across every order.</p>
+<p>QSA Apparels (Quadra Source Apparals) offers a comprehensive suite of B2B apparel manufacturing and sourcing services designed to support your brand at every stage — from initial concept to final warehouse delivery. Our vertically integrated operations eliminate middlemen, reduce lead times, and guarantee consistent quality across every order.</p>
 
 <h3>1. Garment Sourcing</h3>
 <p>Our sourcing team maintains long-standing relationships with Bangladesh's finest fabric mills, yarn spinners, trim suppliers, and accessory manufacturers. We procure premium cotton, polyester, denim, linen, and eco-certified organic fabric blends at competitive bulk prices, passing savings directly to your order.</p>
@@ -358,15 +358,15 @@ async function main() {
       update: {
         title: page.title,
         content: page.content,
-        metaTitle: `${page.title} | Texasia International Fashion Co., Ltd.`,
-        metaDesc: `Learn about Texasia International's ${page.title.toLowerCase()}. BSCI & SEDEX certified garment manufacturer in Dhaka, Bangladesh.`,
+        metaTitle: `${page.title} | QSA Apparels (Quadra Source Apparals)`,
+        metaDesc: `Learn about QSA Apparels's ${page.title.toLowerCase()}. BSCI & SEDEX certified garment manufacturer in Dhaka, Bangladesh.`,
       },
       create: {
         slug: page.slug,
         title: page.title,
         content: page.content,
-        metaTitle: `${page.title} | Texasia International Fashion Co., Ltd.`,
-        metaDesc: `Learn about Texasia International's ${page.title.toLowerCase()}. BSCI & SEDEX certified garment manufacturer in Dhaka, Bangladesh.`,
+        metaTitle: `${page.title} | QSA Apparels (Quadra Source Apparals)`,
+        metaDesc: `Learn about QSA Apparels's ${page.title.toLowerCase()}. BSCI & SEDEX certified garment manufacturer in Dhaka, Bangladesh.`,
       },
     });
   }
@@ -399,7 +399,7 @@ async function main() {
   <li><strong>Inline Quality Control (IQC):</strong> Continuous on-floor monitoring of stitch precision, seam strength, and button/hardware security during active assembly.</li>
   <li><strong>Final AQL Inspection:</strong> Rigorous random sampling based on internationally recognized Acceptable Quality Limits (AQL 1.5 or AQL 2.5) before packaging and sealing containers.</li>
 </ol>
-<p>Sourcing your next apparel line from a certified Bangladesh factory like Texasia International has never been safer or more profitable. Contact us at rony@texasia.com to get started.</p>`,
+<p>Sourcing your next apparel line from a certified Bangladesh factory like QSA Apparels has never been safer or more profitable. Contact us at rony@texasia.com to get started.</p>`,
     },
     {
       slug: "why-bangladesh-is-top-apparel-manufacturing-hub",
@@ -415,7 +415,7 @@ async function main() {
 <h3>3. Highly Skilled and Agile Workforce</h3>
 <p>With nearly four decades of collective industrial experience, Bangladesh boasts an exceptionally skilled garment workforce. Local pattern designers, quality auditors, sewing line technicians, and B2B merchandisers possess deep technical expertise in handling intricate premium fabric blends, complex digital CAD software, and high-tech sewing hardware.</p>
 <h3>4. Unmatched Cost Efficiency at Scale</h3>
-<p>Thanks to massive industrial scales, robust shipping channels, and competitive tariff agreements (including duty-free access to major European and Canadian markets), Bangladesh offers B2B apparel buyers unparalleled value. At Texasia International, we continue to bridge the gap between premium visual quality and high-margin cost efficiencies, making Bangladesh the absolute top choice for global apparel sourcing.</p>`,
+<p>Thanks to massive industrial scales, robust shipping channels, and competitive tariff agreements (including duty-free access to major European and Canadian markets), Bangladesh offers B2B apparel buyers unparalleled value. At QSA Apparels, we continue to bridge the gap between premium visual quality and high-margin cost efficiencies, making Bangladesh the absolute top choice for global apparel sourcing.</p>`,
     },
     {
       slug: "oem-vs-odm-vs-private-label-brands",
@@ -430,7 +430,7 @@ async function main() {
 <p>Don't have an in-house design team or a complete tech pack? The ODM model is designed specifically for you. The manufacturer's in-house design team creates a diverse catalog of pre-designed, pre-tested clothing styles, fabric options, and silhouettes that align with current international fashion trends. The brand selects the styles they like, requests minor modifications (custom colorways, logo placements, or custom hardware), and the factory manages the entire design-to-production lifecycle — making it an incredibly fast and cost-effective model for brands looking to launch new apparel lines rapidly.</p>
 <h3>3. Private Labeling: Curated and Branded</h3>
 <p>Private Labeling is a highly streamlined variation of the ODM model. The factory manufactures premium blank or pre-made apparel items and stocks them in large volumes. The brand selects these premium blanks and requests the factory to customize them with custom woven neck tags, printed care labels, retail hangtags, and screen-printed or embroidered graphics. This model features the lowest setup costs and the fastest production turnaround times — the absolute ideal choice for emerging e-commerce brands, high-growth startups, and promotional merchandise projects.</p>
-<p>At Texasia International, we offer flexible, world-class OEM, ODM, and Private Label solutions. Contact us at rony@texasia.com to discuss which model fits your brand best.</p>`,
+<p>At QSA Apparels, we offer flexible, world-class OEM, ODM, and Private Label solutions. Contact us at rony@texasia.com to discuss which model fits your brand best.</p>`,
     },
     {
       slug: "sustainable-garment-manufacturing-outlook",
@@ -444,7 +444,7 @@ async function main() {
 <h3>2. Green Dyeing and Low-Water Technologies</h3>
 <p>Modern Bangladeshi facilities have adopted high-efficiency low-liquor ratio dyeing machines and waterless dyeing technologies. These advanced machines utilize specialized liquid carbon dioxide or high-pressure air to disperse organic dyes directly into the fabric fibers, reducing clean groundwater usage by over 80%. Factories are mandating the absolute exclusion of hazardous chemicals, utilizing strictly OEKO-TEX Standard 100 and GOTS-certified organic dyes that are completely biodegradable and safe for human contact.</p>
 <h3>3. Renewable Energy and Green Infrastructure</h3>
-<p>LEED Gold certified factories are installing high-capacity rooftop solar arrays to supply up to 30% of their operational electricity. They also utilize advanced heat-recovery systems that capture thermal energy from manufacturing machinery and recycle it to run fabric dryer units, drastically lowering total carbon emissions. At Texasia International, we remain deeply committed to these green initiatives, ensuring your brand's sustainability goals are fully realized on the production floor.</p>`,
+<p>LEED Gold certified factories are installing high-capacity rooftop solar arrays to supply up to 30% of their operational electricity. They also utilize advanced heat-recovery systems that capture thermal energy from manufacturing machinery and recycle it to run fabric dryer units, drastically lowering total carbon emissions. At QSA Apparels, we remain deeply committed to these green initiatives, ensuring your brand's sustainability goals are fully realized on the production floor.</p>`,
     },
     {
       slug: "low-moq-manufacturing-startup-competitiveness",
@@ -458,7 +458,7 @@ async function main() {
 <h3>2. Agile Market Testing and Real-Time Feedback</h3>
 <p>Instead of guessing which colors and styles will be popular next season, low MOQ manufacturing allows you to test the market with highly curated, limited-run capsule collections. You can analyze real-time sales data, identify your absolute best-selling styles, and rapidly re-order bulk volumes of the winners. This agile manufacturing feedback loop minimizes markdown losses, prevents expensive warehouse storage fees, and ensures your inventory is always fresh and aligned with active buyer demand.</p>
 <h3>3. Speed to Market and Fresh Collections</h3>
-<p>Massive production runs often require 6 to 9 months of planning and assembly. Low MOQ orders feature drastically shorter manufacturing cycles, typically requiring only 30 to 45 business days. This rapid turnaround enables your startup to release fresh, limited-edition collections every month, generating high customer engagement, repeat purchases, and a premium brand image. At Texasia International, we specialize in supporting emerging apparel brands with robust, low MOQ manufacturing starting at 500 pieces. Contact rony@texasia.com to get started.</p>`,
+<p>Massive production runs often require 6 to 9 months of planning and assembly. Low MOQ orders feature drastically shorter manufacturing cycles, typically requiring only 30 to 45 business days. This rapid turnaround enables your startup to release fresh, limited-edition collections every month, generating high customer engagement, repeat purchases, and a premium brand image. At QSA Apparels, we specialize in supporting emerging apparel brands with robust, low MOQ manufacturing starting at 500 pieces. Contact rony@texasia.com to get started.</p>`,
     },
     // New blog posts from blueprint
     {
@@ -499,8 +499,8 @@ async function main() {
 <h3>10. 7 For All Mankind</h3>
 <p>Los Angeles-born 7 For All Mankind pioneered the premium denim revolution. Known for ultra-soft, body-contouring stretch denim and sophisticated wash treatments, the brand's wholesale network spans premium department stores globally — an ideal benchmark for private label buyers targeting the USD 100–200 premium denim segment.</p>
 
-<h3>Why Partner with Texasia for Denim Manufacturing?</h3>
-<p>While the brands above represent the retail-facing faces of the global denim market, the real competitive advantage lies in your manufacturing foundation. Texasia International Fashion Co., Ltd. is Bangladesh's premier denim manufacturing partner, offering end-to-end OEM and private label denim production. From raw denim fabric procurement to hand-whisker distressing, stone washing, and custom labeling, we deliver retail-ready denim collections to wholesale buyers targeting the USA, EU, and UK markets. Contact us at rony@texasia.com to start your denim sourcing journey today.</p>`,
+<h3>Why Partner with QSA for Denim Manufacturing?</h3>
+<p>While the brands above represent the retail-facing faces of the global denim market, the real competitive advantage lies in your manufacturing foundation. QSA Apparels (Quadra Source Apparals) is Bangladesh's premier denim manufacturing partner, offering end-to-end OEM and private label denim production. From raw denim fabric procurement to hand-whisker distressing, stone washing, and custom labeling, we deliver retail-ready denim collections to wholesale buyers targeting the USA, EU, and UK markets. Contact us at rony@texasia.com to start your denim sourcing journey today.</p>`,
     },
     {
       slug: "top-10-polo-shirt-producers-in-the-world",
@@ -537,8 +537,8 @@ async function main() {
 <h3>9. GANT</h3>
 <p>Swedish-American brand GANT (est. 1949) produces premium polo shirts renowned for their Oxford piqué construction, precision fit, and university heritage aesthetics. GANT's B2B wholesale network spans premium department stores across Scandinavia, Germany, France, and the UK.</p>
 
-<h3>10. Texasia International Fashion Co., Ltd.</h3>
-<p>As Bangladesh's premier polo shirt manufacturer, Texasia International produces custom OEM and private label polo shirts for global wholesale buyers, e-commerce sellers, and corporate uniform clients. We offer complete customization including piqué, jersey, and dry-fit polo constructions, custom embroidery, private labeling, and flexible MOQs starting at 500 pieces. Contact rony@texasia.com for a free production quote today.</p>`,
+<h3>10. QSA Apparels (Quadra Source Apparals)</h3>
+<p>As Bangladesh's premier polo shirt manufacturer, QSA Apparels produces custom OEM and private label polo shirts for global wholesale buyers, e-commerce sellers, and corporate uniform clients. We offer complete customization including piqué, jersey, and dry-fit polo constructions, custom embroidery, private labeling, and flexible MOQs starting at 500 pieces. Contact rony@texasia.com for a free production quote today.</p>`,
     },
     {
       slug: "top-10-polo-shirt-brands-in-the-world-2026",
@@ -575,8 +575,8 @@ async function main() {
 <h3>9. Nike Polo — Sport-Inspired Global Reach</h3>
 <p>Nike's polo shirt lineup in 2026 leverages its Dri-FIT technology across an extensive range of performance and lifestyle polo styles. With global distribution through sports retailers, department stores, and direct-to-consumer channels, Nike remains the dominant name in performance polo shirts for wholesale buyers targeting the sports and athleisure market.</p>
 
-<h3>10. Texasia International — Your Custom Polo Manufacturing Partner</h3>
-<p>For wholesale buyers, private label brands, and e-commerce sellers looking to manufacture premium custom polo shirts, Texasia International Fashion Co., Ltd. is Bangladesh's leading polo shirt manufacturer. We produce OEM and private label polo shirts in piqué, jersey, dry-fit, and interlock constructions — with custom embroidery, heat transfer printing, private labeling, and flexible MOQs starting at just 500 pieces. Reach us at rony@texasia.com or +88 017 367 55 829.</p>`,
+<h3>10. QSA Apparels — Your Custom Polo Manufacturing Partner</h3>
+<p>For wholesale buyers, private label brands, and e-commerce sellers looking to manufacture premium custom polo shirts, QSA Apparels (Quadra Source Apparals) is Bangladesh's leading polo shirt manufacturer. We produce OEM and private label polo shirts in piqué, jersey, dry-fit, and interlock constructions — with custom embroidery, heat transfer printing, private labeling, and flexible MOQs starting at just 500 pieces. Reach us at rony@texasia.com or +88 017 367 55 829.</p>`,
     },
     {
       slug: "top-20-trousers-brands-in-the-world-2026",
@@ -619,8 +619,8 @@ async function main() {
 <h3>11–20. Other Leading Trouser Brands</h3>
 <p>Other globally influential trouser brands include: <strong>Bonobos</strong> (USA, premium chino pioneer), <strong>J.Crew</strong> (USA, collegiate casual), <strong>Ted Baker</strong> (UK, premium tailored), <strong>Paul Smith</strong> (UK, designer quirky formal), <strong>Banana Republic</strong> (USA, premium corporate casual), <strong>Gap</strong> (USA, accessible casual), <strong>Massimo Dutti</strong> (Spain, premium accessible tailored), <strong>Mango Man</strong> (Spain, smart casual), <strong>ASOS Design</strong> (UK, youth fashion), and <strong>Jack & Jones</strong> (Denmark, mid-market youth casual).</p>
 
-<h3>Manufacturing Your Own Trouser Brand with Texasia</h3>
-<p>Understanding these top brands is the first step. The next step is building your own competitive trouser collection. Texasia International Fashion Co., Ltd. is Bangladesh's leading custom trouser manufacturer, producing OEM and private label chinos, formal dress trousers, cargo trousers, and technical stretch pants for wholesale buyers and private label brands globally. With MOQs starting at just 500 pieces, full customization options, and BSCI & SEDEX certified production, we help you build the trouser brand of the future. Contact rony@texasia.com for a free quote today.</p>`,
+<h3>Manufacturing Your Own Trouser Brand with QSA</h3>
+<p>Understanding these top brands is the first step. The next step is building your own competitive trouser collection. QSA Apparels (Quadra Source Apparals) is Bangladesh's leading custom trouser manufacturer, producing OEM and private label chinos, formal dress trousers, cargo trousers, and technical stretch pants for wholesale buyers and private label brands globally. With MOQs starting at just 500 pieces, full customization options, and BSCI & SEDEX certified production, we help you build the trouser brand of the future. Contact rony@texasia.com for a free quote today.</p>`,
     },
     {
       slug: "top-10-private-label-hoodie-suppliers-usa",
@@ -630,8 +630,8 @@ async function main() {
       content: `<h2>Finding the Best Private Label Hoodie Suppliers for the USA Market</h2>
 <p>The USA hoodie market is one of the most competitive and lucrative segments in global apparel retail. Americans purchase over 70 million hoodies annually across every price tier — from USD 15 fast-fashion hoodies to USD 300+ luxury brand hoodies. For e-commerce brands, print-on-demand businesses, and wholesale retail buyers, finding the right private label hoodie supplier is a make-or-break decision. Here are the top 10 private label hoodie suppliers for the USA market in 2026.</p>
 
-<h3>1. Texasia International Fashion Co., Ltd. (Bangladesh)</h3>
-<p>Texasia International is Bangladesh's premier certified hoodie manufacturer for the USA market. We produce premium custom hoodies in 280–480 GSM French terry, fleece, and loopback cotton constructions. Key advantages for USA buyers: BSCI & SEDEX certified ethical production, flexible MOQs starting at 500 pieces, full private labeling (custom woven neck tags, heat-transfer labels, retail hangtags), FOB and DDP shipping, and average lead times of 30–45 business days. Contact rony@texasia.com for a free factory quote.</p>
+<h3>1. QSA Apparels (Quadra Source Apparals) (Bangladesh)</h3>
+<p>QSA Apparels is Bangladesh's premier certified hoodie manufacturer for the USA market. We produce premium custom hoodies in 280–480 GSM French terry, fleece, and loopback cotton constructions. Key advantages for USA buyers: BSCI & SEDEX certified ethical production, flexible MOQs starting at 500 pieces, full private labeling (custom woven neck tags, heat-transfer labels, retail hangtags), FOB and DDP shipping, and average lead times of 30–45 business days. Contact rony@texasia.com for a free factory quote.</p>
 
 <h3>2. Gildan Activewear (Canada/Honduras)</h3>
 <p>Gildan is one of the world's largest blank apparel manufacturers, known for its Heavy Blend and Softstyle hoodie lines. Gildan hoodies are staples for USA print-on-demand businesses and promotional merchandise programs due to their competitive pricing and consistent blank quality. However, Gildan offers limited customization and does not support private label branding at low MOQs.</p>
@@ -661,7 +661,7 @@ async function main() {
 <p>Anvil Knitwear, now part of the Gildan Activewear family, produces eco-friendly 100% organic cotton hoodies under its Eco-Hybrid and Ringspun series. Popular with USA sustainable brand clients and B-Corp certified businesses looking for premium, environmentally responsible private label hoodie sourcing options.</p>
 
 <h3>How to Choose the Right Hoodie Supplier for Your USA Brand</h3>
-<p>Selecting the right private label hoodie supplier depends on your price point, target consumer, customization requirements, and order volume. For USA e-commerce brands seeking premium, fully custom hoodies with private labeling, ethical certification, and competitive factory-direct pricing, partnering with a Bangladesh manufacturer like Texasia International delivers the best combination of quality, customization, and cost efficiency. Reach us at rony@texasia.com or +88 017 367 55 829 to discuss your custom hoodie program today.</p>`,
+<p>Selecting the right private label hoodie supplier depends on your price point, target consumer, customization requirements, and order volume. For USA e-commerce brands seeking premium, fully custom hoodies with private labeling, ethical certification, and competitive factory-direct pricing, partnering with a Bangladesh manufacturer like QSA Apparels delivers the best combination of quality, customization, and cost efficiency. Reach us at rony@texasia.com or +88 017 367 55 829 to discuss your custom hoodie program today.</p>`,
     },
     {
       slug: "t-shirt-vs-tee-shirt",
@@ -698,9 +698,9 @@ async function main() {
 </ul>
 
 <h3>Source Premium Custom T-Shirts from Bangladesh</h3>
-<p>Whether you need t-shirts or tee shirts — Texasia International Fashion Co., Ltd. is Bangladesh's leading custom t-shirt manufacturer. We produce premium OEM and private label t-shirts in ring-spun cotton, organic cotton, and cotton-poly blend constructions for wholesale buyers, retail brands, and e-commerce sellers globally. MOQs start at just 500 pieces with full private labeling and international shipping. Request a free quote at rony@texasia.com or call +88 017 367 55 829.</p>
+<p>Whether you need t-shirts or tee shirts — QSA Apparels (Quadra Source Apparals) is Bangladesh's leading custom t-shirt manufacturer. We produce premium OEM and private label t-shirts in ring-spun cotton, organic cotton, and cotton-poly blend constructions for wholesale buyers, retail brands, and e-commerce sellers globally. MOQs start at just 500 pieces with full private labeling and international shipping. Request a free quote at rony@texasia.com or call +88 017 367 55 829.</p>
 
-<p><em>Author: Rahamatullah Rony — Founder, Texasia International Fashion Co., Ltd. | 10+ years RMG industry experience.</em></p>`,
+<p><em>Author: Rahamatullah Rony — Founder, QSA Apparels (Quadra Source Apparals) | 10+ years RMG industry experience.</em></p>`,
     },
     {
       slug: "polo-shirt-vs-t-shirt",
@@ -730,7 +730,7 @@ async function main() {
     <tr><td>Formality Level</td><td>Casual</td><td>Smart-Casual</td></tr>
     <tr><td>Typical Occasion</td><td>Leisure, gym, events</td><td>Golf, corporate, dining</td></tr>
     <tr><td>Wholesale Price</td><td>USD 3–8 FOB</td><td>USD 6–15 FOB</td></tr>
-    <tr><td>MOQ (Texasia)</td><td>500 pieces</td><td>500 pieces</td></tr>
+    <tr><td>MOQ (QSA)</td><td>500 pieces</td><td>500 pieces</td></tr>
   </tbody>
 </table>
 
@@ -741,9 +741,9 @@ async function main() {
 <p>T-shirts are the right choice for: promotional merchandise, print-on-demand e-commerce, events and sports teams, fashion and streetwear brands, blank apparel for decorators, and retail brands targeting youth and lifestyle demographics globally.</p>
 
 <h3>Sourcing Tip: Both Work Best from Bangladesh</h3>
-<p>Whether your brand needs premium custom polo shirts or custom t-shirts, Bangladesh is the world's most cost-effective and certified source. Texasia International Fashion Co., Ltd. manufactures both polo shirts (piqué, jersey, dry-fit, interlock) and t-shirts (ring-spun cotton, organic, CVC blends) for wholesale buyers and private label brands globally. MOQs start at 500 pieces with full OEM, ODM, and private label customization. Contact rony@texasia.com or call +88 017 367 55 829 for a free factory quote.</p>
+<p>Whether your brand needs premium custom polo shirts or custom t-shirts, Bangladesh is the world's most cost-effective and certified source. QSA Apparels (Quadra Source Apparals) manufactures both polo shirts (piqué, jersey, dry-fit, interlock) and t-shirts (ring-spun cotton, organic, CVC blends) for wholesale buyers and private label brands globally. MOQs start at 500 pieces with full OEM, ODM, and private label customization. Contact rony@texasia.com or call +88 017 367 55 829 for a free factory quote.</p>
 
-<p><em>Author: Rahamatullah Rony — Founder, Texasia International Fashion Co., Ltd. | 10+ years RMG industry experience.</em></p>`,
+<p><em>Author: Rahamatullah Rony — Founder, QSA Apparels (Quadra Source Apparals) | 10+ years RMG industry experience.</em></p>`,
     },
   ];
 
@@ -758,7 +758,7 @@ async function main() {
         tags: blog.tags,
         isPublished: true,
         publishedAt: new Date(),
-        metaTitle: `${blog.title} | Texasia International`,
+        metaTitle: `${blog.title} | QSA Apparels`,
         metaDesc: blog.excerpt,
       },
       create: {
@@ -771,7 +771,7 @@ async function main() {
         tags: blog.tags,
         isPublished: true,
         publishedAt: new Date(),
-        metaTitle: `${blog.title} | Texasia International`,
+        metaTitle: `${blog.title} | QSA Apparels`,
         metaDesc: blog.excerpt,
       },
     });
@@ -799,10 +799,10 @@ async function main() {
     { question: "How does fabric weight (GSM) impact production cost and MOQ?", answer: "Fabric weight (GSM) determines fabric density and raw cotton volume. Heavier GSM fabrics (like 350 GSM premium hoodies) require more yarn and thermal treatment, naturally increasing raw material cost compared to lightweight t-shirts (160 GSM). We optimize yarn procurement in bulk to keep costs competitive regardless of your GSM.", category: "MOQ", order: 2 },
     { question: "Do you support mixed size and color assortments within a 500 pcs MOQ?", answer: "Yes, within our standard 500 pieces style MOQ, we support flexible size assortments (e.g. S to 3XL spread according to your retail demographics) and up to two different colorways (250 pieces per color), allowing you to offer beautiful variation to your retail customers.", category: "MOQ", order: 3 },
     // New 10 FAQs from blueprint themes
-    { question: "How do I track my shipment after it leaves Bangladesh?", answer: "Once your bulk order is loaded and sealed, we provide you with complete shipping documentation. For ocean freight, you receive a House Bill of Lading (HBL) with the vessel name, voyage number, and container tracking number. For air freight, we provide an Air Waybill (AWB) number. You can track your shipment in real-time through the respective freight carrier's online portal or via your dedicated Texasia account merchandiser.", category: "Shipping", order: 3 },
+    { question: "How do I track my shipment after it leaves Bangladesh?", answer: "Once your bulk order is loaded and sealed, we provide you with complete shipping documentation. For ocean freight, you receive a House Bill of Lading (HBL) with the vessel name, voyage number, and container tracking number. For air freight, we provide an Air Waybill (AWB) number. You can track your shipment in real-time through the respective freight carrier's online portal or via your dedicated QSA account merchandiser.", category: "Shipping", order: 3 },
     { question: "What is your policy for defective or non-conforming garments?", answer: "We stand fully behind our quality commitments. If any garments are found to be defective post-delivery within the AQL tolerance report scope, we offer full replacements, credit notes, or partial refunds depending on the defect severity and volume. We take every quality complaint extremely seriously and use each case to refine our production processes. A detailed defect report with photographic evidence is required to initiate any claim.", category: "Production", order: 5 },
     { question: "Do you offer bulk pricing discounts for large volume orders?", answer: "Yes, we offer tiered volume discounts. Orders above 5,000 pieces per style receive a 5–8% unit price reduction, while orders exceeding 10,000 pieces qualify for custom pricing negotiations with our senior accounts team. Repeat orders from existing long-term partners also enjoy loyalty discounts on sampling fees and receive priority production scheduling during peak seasons.", category: "General", order: 7 },
-    { question: "How do I request a price quotation from Texasia?", answer: "Requesting a quote is simple and fast. Fill out our online RFQ (Request for Quotation) form with your product category, estimated quantity, fabric preference, target delivery date, and any customization details. You can also email us directly at rony@texasia.com or WhatsApp us at +88 017 367 55 829. We respond to all quote requests within 24 business hours.", category: "General", order: 8 },
+    { question: "How do I request a price quotation from QSA?", answer: "Requesting a quote is simple and fast. Fill out our online RFQ (Request for Quotation) form with your product category, estimated quantity, fabric preference, target delivery date, and any customization details. You can also email us directly at rony@texasia.com or WhatsApp us at +88 017 367 55 829. We respond to all quote requests within 24 business hours.", category: "General", order: 8 },
     { question: "Do you cater to retailers and wholesalers in addition to large brands?", answer: "Absolutely. Our flexible manufacturing model is designed to serve a diverse range of B2B buyers at every scale. We work with established retail chains, wholesale importers, boutique retailers, e-commerce sellers, private label startups, and promotional merchandise companies. Our low 500-piece MOQ ensures that buyers at every scale can access premium factory-direct pricing without committing to massive volumes.", category: "General", order: 9 },
     { question: "Can we arrange a guided tour of your manufacturing facility?", answer: "Yes, factory tours are available by appointment for verified B2B buyers, sourcing agents, and compliance auditors. We arrange a comprehensive facility walkthrough covering our cutting room, sewing lines, QC stations, finishing department, and sustainability infrastructure. Please contact us at least 5 business days in advance to schedule your visit. We can also coordinate airport pickup and local hotel recommendations for international visitors traveling to Dhaka.", category: "General", order: 10 },
     { question: "How can we provide feedback on completed orders?", answer: "We actively welcome buyer feedback. After every order delivery, your dedicated merchandiser sends a structured quality feedback form. You can also email your feedback directly to rony@texasia.com or reach out via WhatsApp at +88 017 367 55 829. We review all buyer feedback in monthly internal production review meetings and use it to continuously improve our standards, processes, and communication quality.", category: "General", order: 11 },
@@ -850,7 +850,7 @@ async function main() {
       department: "Global Sales & Business Development",
       location: "Remote / Hybrid (Dhaka Office)",
       type: "Full-time / Contract",
-      description: "Expand Texasia's commercial footprint across the European Union. You will identify wholesale clothing importers, private labels, retail brands, and e-commerce sellers, offering them our premium OEM/ODM apparel manufacturing and sourcing capabilities.",
+      description: "Expand QSA's commercial footprint across the European Union. You will identify wholesale clothing importers, private labels, retail brands, and e-commerce sellers, offering them our premium OEM/ODM apparel manufacturing and sourcing capabilities.",
       requirements: "Proven track record in international RMG sales, existing network of fashion buyers in EU/UK, native or highly fluent English (other European languages are a major plus), and strong B2B presentation skills.",
     },
     {
@@ -877,7 +877,7 @@ async function main() {
       department: "Marketing & Communications",
       location: "Remote / Hybrid (Dhaka Office)",
       type: "Full-time",
-      description: "Drive Texasia's global B2B digital visibility through SEO, content marketing, and social media management. You will develop and execute keyword strategies targeting international garment buyers, manage our LinkedIn and Instagram presence, coordinate blog content creation, and track organic lead generation from our website.",
+      description: "Drive QSA's global B2B digital visibility through SEO, content marketing, and social media management. You will develop and execute keyword strategies targeting international garment buyers, manage our LinkedIn and Instagram presence, coordinate blog content creation, and track organic lead generation from our website.",
       requirements: "Minimum 2–3 years experience in B2B digital marketing and SEO, strong understanding of on-page and off-page SEO for e-commerce and B2B manufacturing websites, proficiency in Google Analytics, Search Console, and Ahrefs or SEMrush, excellent English copywriting skills, and familiarity with the global RMG or fashion industry is a strong advantage.",
     },
   ];

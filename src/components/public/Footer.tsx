@@ -50,13 +50,9 @@ export default function Footer() {
         {/* Column 1: About */}
         <div className="space-y-6">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#0b2545] to-[#d4a574] p-[1px] flex items-center justify-center">
-              <div className="w-full h-full bg-[#040d1a] rounded-[7px] flex items-center justify-center">
-                <span className="text-[#d4a574] text-xs font-black font-heading tracking-tighter">TX</span>
-              </div>
-            </div>
+            <img src="/logo.jpeg" alt="QSA Apparels Logo" className="h-8 w-auto rounded bg-white object-contain" />
             <span className="font-bold text-white font-heading text-sm tracking-tight leading-none">
-              {settings?.siteName || "Texasia International"}
+              {settings?.siteName || "QSA Apparels"}
             </span>
           </Link>
           <p className="text-xs leading-relaxed text-slate-500">
@@ -177,7 +173,7 @@ export default function Footer() {
       {/* Bottom strips */}
       <div className="max-w-7xl mx-auto px-6 border-t border-[#0f2545]/40 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-slate-600 font-semibold">
         <div>
-          <span>{settings?.footerText || `© ${year} Texasia International Fashion Co., Ltd. All rights reserved.`}</span>
+          <span>{settings?.footerText || `© ${year} QSA Apparels (Quadra Source Apparals). All rights reserved.`}</span>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/profile" className="hover:text-white transition-premium">Privacy Policy</Link>
