@@ -22,31 +22,10 @@ type RFQFormValues = zod.infer<typeof rfqSchema>;
 
 export default function PopupRfqForm() {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileAttached, setFileAttached] = useState<File | null>(null);
   const pathname = usePathname();
 
-  useEffect(() => {
-    // If we are on the homepage, check if 6 minutes have passed since last shown
-    if (pathname === "/" && !hasShown) {
-      const lastShown = localStorage.getItem("rfqPopupLastShown");
-      const now = Date.now();
-      const sixMinutes = 6 * 60 * 1000;
-
-      if (!lastShown || now - parseInt(lastShown, 10) > sixMinutes) {
-        const timer = setTimeout(() => {
-          setIsOpen(true);
-          setHasShown(true);
-          localStorage.setItem("rfqPopupLastShown", now.toString());
-        }, 1500);
-
-        return () => clearTimeout(timer);
-      } else {
-        setHasShown(true); // Prevent checking again this session
-      }
-    }
-  }, [pathname, hasShown]);
 
   useEffect(() => {
     const handleOpenPopup = () => {
