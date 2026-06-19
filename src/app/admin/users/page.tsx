@@ -277,7 +277,7 @@ export default function AdminUsersPage() {
                     <input
                       {...register("email")}
                       type="email"
-                      placeholder="e.g. john@texasia.local"
+                      placeholder="e.g. john@qsaapparels.local"
                       disabled={!!editingUser}
                       className="w-full bg-[#040d1a]/80 border border-[#0f2545] rounded-xl py-2.5 px-4 text-white focus:outline-none focus:border-[#d4a574] transition-premium disabled:opacity-50"
                     />

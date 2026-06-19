@@ -64,7 +64,7 @@ export async function POST(request: Request) {
         coverImage,
         authorId: session.user?.id as string,
         tags,
-        metaTitle: metaTitle || `${title} | Texasia Insights`,
+        metaTitle: metaTitle || `${title} | QSA Apparels Insights`,
         metaDesc: metaDesc || excerpt || `Read our latest insight regarding ${title}`,
         isPublished: isPublished !== undefined ? isPublished : false,
         publishedAt: isPublished ? new Date() : null,

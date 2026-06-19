@@ -37,45 +37,39 @@ export default function Footer() {
 
   const quickLinks = [
     { name: "Company Profile", href: "/profile" },
-    { name: "Sustainability & Green", href: "/sustainability" },
-    { name: "Accreditation & Audits", href: "/accreditation" },
-    { name: "Open Careers", href: "/career" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Contact Sourcing", href: "/contact" },
+    { name: "Sustainability", href: "/sustainability" },
+    { name: "Accreditation", href: "/accreditation" },
+    { name: "Careers", href: "/career" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <footer ref={footerRef} className="bg-[#040d1a] border-t border-[#0f2545]/60 text-slate-400 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer ref={footerRef} className="bg-white border-t border-gray-200 text-[#6c757d] pt-20 pb-10">
+      <div className="max-w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         {/* Column 1: About */}
         <div className="space-y-6">
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.jpeg" alt="QSA Apparels Logo" className="h-8 w-auto rounded bg-white object-contain" />
-            <span className="font-bold text-white font-heading text-sm tracking-tight leading-none">
-              {settings?.siteName || "QSA Apparels"}
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#d12026] flex items-center justify-center text-white font-heading font-light text-lg">
+              T
+            </div>
+            <span className="font-heading font-light text-[#212529] text-xs tracking-[0.3em] uppercase">
+              QSA Apparels
             </span>
           </Link>
-          <p className="text-xs leading-relaxed text-slate-500">
-            {settings?.tagline || "World-class readymade garment manufacturer and sourcing partner based in Dhaka, Bangladesh. WRAP, BSCI, SEDEX, and OEKO-TEX certified green facility."}
+          <p className="text-xs leading-[1.8] font-light">
+            {settings?.tagline || "World-class readymade garment manufacturer and sourcing partner based in Dhaka, Bangladesh."}
           </p>
-          {/* Certification badges small row */}
-          <div className="flex flex-wrap gap-2 text-[9px] font-bold text-slate-600">
-            <span className="bg-[#0b2545]/30 border border-[#0f2545]/30 px-1.5 py-0.5 rounded">BSCI</span>
-            <span className="bg-[#0b2545]/30 border border-[#0f2545]/30 px-1.5 py-0.5 rounded">SEDEX</span>
-            <span className="bg-[#0b2545]/30 border border-[#0f2545]/30 px-1.5 py-0.5 rounded">WRAP</span>
-            <span className="bg-[#0b2545]/30 border border-[#0f2545]/30 px-1.5 py-0.5 rounded">LEED GOLD</span>
-          </div>
         </div>
 
         {/* Column 2: Quick Links */}
-        <div className="space-y-4">
-          <h4 className="text-white font-heading font-bold text-xs uppercase tracking-widest border-b border-[#0f2545] pb-2">
+        <div className="space-y-6">
+          <h4 className="text-[#212529] font-heading font-light text-[10px] uppercase tracking-[0.2em]">
             Quick Links
           </h4>
-          <ul className="space-y-2.5 text-xs font-semibold">
+          <ul className="space-y-3 text-[11px] font-medium tracking-widest uppercase">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-[#d4a574] transition-premium">
+                <Link href={link.href} className="hover:text-[#d12026] transition-colors">
                   {link.name}
                 </Link>
               </li>
@@ -83,101 +77,54 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 3: Seeded Categories preview */}
-        <div className="space-y-4">
-          <h4 className="text-white font-heading font-bold text-xs uppercase tracking-widest border-b border-[#0f2545] pb-2">
-            Catalog Directory
+        {/* Column 3: Catalogs */}
+        <div className="space-y-6">
+          <h4 className="text-[#212529] font-heading font-light text-[10px] uppercase tracking-[0.2em]">
+            Catalogs
           </h4>
-          <ul className="space-y-2.5 text-xs font-semibold">
-            <li>
-              <Link href="/products/polos" className="hover:text-[#d4a574] transition-premium">Polos & Knits</Link>
-            </li>
-            <li>
-              <Link href="/products/hoodies-sweatshirts" className="hover:text-[#d4a574] transition-premium">Sweatshirts & Hoodies</Link>
-            </li>
-            <li>
-              <Link href="/products/denim-jeans" className="hover:text-[#d4a574] transition-premium">Denim & Jeans</Link>
-            </li>
-            <li>
-              <Link href="/products/workwear" className="hover:text-[#d4a574] transition-premium">Industrial Workwear</Link>
-            </li>
-            <li>
-              <Link href="/products/circular-knit-jersey" className="hover:text-[#d4a574] transition-premium">Circular Knit Jerseys</Link>
-            </li>
-            <li>
-              <Link href="/products/jute-textile" className="hover:text-[#d4a574] transition-premium">Jute Textiles</Link>
-            </li>
+          <ul className="space-y-3 text-[11px] font-medium tracking-widest uppercase">
+            <li><Link href="/products/polos" className="hover:text-[#d12026] transition-colors">Polos</Link></li>
+            <li><Link href="/products/hoodies-sweatshirts" className="hover:text-[#d12026] transition-colors">Sweatshirts</Link></li>
+            <li><Link href="/products/denim-jeans" className="hover:text-[#d12026] transition-colors">Denim</Link></li>
+            <li><Link href="/products/workwear" className="hover:text-[#d12026] transition-colors">Workwear</Link></li>
           </ul>
         </div>
 
-        {/* Column 4: Contact & Social */}
-        <div className="space-y-4">
-          <h4 className="text-white font-heading font-bold text-xs uppercase tracking-widest border-b border-[#0f2545] pb-2">
-            Dhaka Headquarters
+        {/* Column 4: Contact */}
+        <div className="space-y-6">
+          <h4 className="text-[#212529] font-heading font-light text-[10px] uppercase tracking-[0.2em]">
+            Contact
           </h4>
-          <ul className="space-y-3 text-xs leading-relaxed text-slate-500">
-            <li className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-[#d4a574] shrink-0 mt-0.5" />
-              <span>{settings?.address || "House 45, Road 12, Mirpur DOHS, Dhaka, Bangladesh"}</span>
+          <ul className="space-y-4 text-[11px] leading-[1.6] font-medium uppercase tracking-widest">
+            <li className="flex flex-col gap-1">
+              <span className="text-[#212529]">Address</span>
+              <span className="text-gray-500 font-light lowercase normal-case tracking-normal text-xs">{settings?.address || "Mirpur DOHS, Dhaka, Bangladesh"}</span>
             </li>
-            {settings?.phone && (
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#d4a574] shrink-0" />
-                <span className="text-slate-400 font-semibold">{settings.phone}</span>
-              </li>
-            )}
             {settings?.email && (
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#d4a574] shrink-0" />
-                <a href={`mailto:${settings.email}`} className="text-slate-400 font-semibold hover:text-[#d4a574] transition-premium">
+              <li className="flex flex-col gap-1">
+                <span className="text-[#212529]">Email</span>
+                <a href={`mailto:${settings.email}`} className="text-gray-500 font-light lowercase tracking-normal text-xs hover:text-[#d12026] transition-colors">
                   {settings.email}
                 </a>
               </li>
             )}
-            {settings?.whatsapp && (
-              <li className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-slate-400 font-semibold hover:text-emerald-400 transition-premium">
-                  WhatsApp Direct Sourcing
-                </a>
+            {settings?.phone && (
+              <li className="flex flex-col gap-1">
+                <span className="text-[#212529]">Phone</span>
+                <span className="text-gray-500 font-light tracking-normal text-xs">{settings.phone}</span>
               </li>
             )}
           </ul>
-
-          {/* Social Icons row */}
-          <div className="flex items-center gap-3 pt-2">
-            {settings?.facebook && (
-              <a href={settings.facebook} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#d4a574] transition-premium">
-                <Facebook className="w-4.5 h-4.5" />
-              </a>
-            )}
-            {settings?.linkedin && (
-              <a href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#d4a574] transition-premium">
-                <Linkedin className="w-4.5 h-4.5" />
-              </a>
-            )}
-            {settings?.instagram && (
-              <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#d4a574] transition-premium">
-                <Instagram className="w-4.5 h-4.5" />
-              </a>
-            )}
-            {settings?.youtube && (
-              <a href={settings.youtube} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#d4a574] transition-premium">
-                <Youtube className="w-4.5 h-4.5" />
-              </a>
-            )}
-          </div>
         </div>
       </div>
 
-      {/* Bottom strips */}
-      <div className="max-w-7xl mx-auto px-6 border-t border-[#0f2545]/40 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-slate-600 font-semibold">
+      <div className="max-w-[95%] mx-auto border-t border-gray-100 mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-medium uppercase tracking-widest text-gray-400">
         <div>
-          <span>{settings?.footerText || `© ${year} QSA Apparels (Quadra Source Apparals). All rights reserved.`}</span>
+          <span>{settings?.footerText || `© ${year} QSA Apparels. All rights reserved.`}</span>
         </div>
-        <div className="flex items-center gap-4">
-          <Link href="/profile" className="hover:text-white transition-premium">Privacy Policy</Link>
-          <Link href="/why-choose-us" className="hover:text-white transition-premium">Terms of Service</Link>
+        <div className="flex items-center gap-6">
+          <Link href="/profile" className="hover:text-[#212529] transition-colors">Privacy</Link>
+          <Link href="/why-choose-us" className="hover:text-[#212529] transition-colors">Terms</Link>
         </div>
       </div>
     </footer>

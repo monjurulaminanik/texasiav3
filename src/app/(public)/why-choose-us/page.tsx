@@ -4,7 +4,7 @@ import React from "react";
 import StaticPageLayout from "@/components/public/StaticPageLayout";
 
 export const metadata = {
-  title: "Why Choose Us | Texasia International",
+  title: "Why Choose Us | QSA Apparels",
   description: "Explore our B2B manufacturing advantages: industry-leading low MOQ flexibility, end-to-end QC inspection, and direct Bangladesh factory prices.",
 };
 

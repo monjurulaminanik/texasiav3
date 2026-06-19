@@ -71,8 +71,8 @@ export async function GET(request: Request) {
           data: {
             slug: "home",
             title: "Homepage",
-            content: "<p>Welcome to Texasia International. Customize this page visually using GrapesJS!</p>",
-            metaTitle: "Texasia International Fashion Co., Ltd.",
+            content: "<p>Welcome to QSA Apparels. Customize this page visually using GrapesJS!</p>",
+            metaTitle: "QSA Apparels",
             metaDesc: "Custom garment manufacturer and sourcing partner in Dhaka, Bangladesh.",
           },
         });

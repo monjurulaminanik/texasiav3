@@ -137,43 +137,51 @@ export default async function StaticPageLayout({ slug }: StaticPageLayoutProps) 
   ];
 
   return (
-    <div className="pt-28 pb-20 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
-      {/* Sibling navigation sidebar */}
-      <aside className="lg:sticky lg:top-24 space-y-4 bg-[#081a33]/40 border border-[#0f2545]/60 rounded-2xl p-6">
-        <h4 className="text-white font-heading font-bold text-xs uppercase tracking-widest border-b border-[#0f2545]/50 pb-2 mb-4 flex items-center gap-1.5">
-          <FileCode className="w-4.5 h-4.5 text-[#d4a574]" /> Sourcing Profile
-        </h4>
-        <nav className="flex flex-col gap-2.5 text-xs font-semibold">
-          {siblings.map((sib) => {
-            const isActive = sib.slug === slug;
-            return (
-              <a
-                key={sib.slug}
-                href={`/${sib.slug}`}
-                className={`flex items-center justify-between p-2.5 rounded-lg border transition-premium ${
-                  isActive
-                    ? "bg-[#d4a574] text-[#040d1a] border-[#d4a574]"
-                    : "border-[#0f2545] text-slate-400 hover:text-white hover:border-slate-500 bg-[#081a33]/20"
-                }`}
-              >
-                {sib.name}
-                <ChevronRight className="w-3.5 h-3.5" />
-              </a>
-            );
-          })}
-        </nav>
-      </aside>
+    <div className="bg-white min-h-screen">
+      {/* SECTION 1: HERO CONTAINER (Centro Minimalist) */}
+      <section className="relative pt-40 pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          <h1 className="text-3xl md:text-5xl font-heading font-light tracking-[0.2em] uppercase text-[#212529] text-center border-b border-[#e9ecef] pb-8">
+            {page.title}
+          </h1>
+        </div>
+      </section>
 
-      {/* Main page content area */}
-      <main className="lg:col-span-3 space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
-          {page.title}
-        </h1>
-        {/* Render HTML content securely */}
-        <article className="prose prose-invert max-w-none text-slate-300 text-sm md:text-base leading-relaxed space-y-6">
-          <div dangerouslySetInnerHTML={{ __html: page.content }} />
-        </article>
-      </main>
+      {/* Main Content Layout */}
+      <div className="pb-20 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+        {/* Sibling navigation sidebar */}
+        <aside className="lg:sticky lg:top-32 space-y-4 bg-[#f8f9fa] border border-[#e9ecef] p-6">
+          <h4 className="text-[#212529] font-heading font-light text-xs uppercase tracking-[0.2em] border-b border-[#e9ecef] pb-4 mb-4 flex items-center gap-2">
+            <FileCode className="w-4 h-4 text-[#d12026]" /> SOURCING PROFILE
+          </h4>
+          <nav className="flex flex-col gap-1">
+            {siblings.map((sib) => {
+              const isActive = sib.slug === slug;
+              return (
+                <a
+                  key={sib.slug}
+                  href={`/${sib.slug}`}
+                  className={`flex items-center justify-between px-3 py-3 text-[11px] font-medium tracking-widest uppercase transition-colors ${
+                    isActive
+                      ? "bg-white text-[#d12026] border-l-2 border-[#d12026]"
+                      : "text-[#6c757d] hover:bg-white hover:text-[#212529] border-l-2 border-transparent"
+                  }`}
+                >
+                  {sib.name}
+                  <ChevronRight className={`w-3.5 h-3.5 ${isActive ? "opacity-100" : "opacity-0"}`} />
+                </a>
+              );
+            })}
+          </nav>
+        </aside>
+
+        {/* Main page content area */}
+        <main className="lg:col-span-3">
+          <article className="prose prose-slate max-w-none text-[#212529] text-sm md:text-base leading-[1.8] font-light">
+            <div dangerouslySetInnerHTML={{ __html: page.content }} />
+          </article>
+        </main>
+      </div>
     </div>
   );
 }

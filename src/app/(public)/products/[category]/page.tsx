@@ -44,50 +44,47 @@ export default async function PublicCategoryProductsPage({ params }: CategoryPag
   });
 
   return (
-    <div className="pt-28 pb-20 space-y-16">
+    <div className="bg-white min-h-screen pt-40 pb-20">
       {/* BREADCRUMB STRIP */}
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center flex-wrap gap-2 text-xs text-slate-500 font-semibold uppercase tracking-wider">
-          <Link href="/" className="hover:text-white flex items-center gap-1">
-            <Home className="w-3.5 h-3.5" /> Home
+      <section className="max-w-[95%] mx-auto px-6 mb-12">
+        <div className="flex items-center flex-wrap gap-2 text-[10px] text-gray-400 font-medium uppercase tracking-widest">
+          <Link href="/" className="hover:text-[#212529] flex items-center gap-1 transition-colors">
+            <Home className="w-3 h-3" /> Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/products" className="hover:text-white">
-            Products
+          <ChevronRight className="w-3 h-3" />
+          <Link href="/products" className="hover:text-[#212529] transition-colors">
+            Catalogs
           </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-[#d4a574] font-bold">{category.name}</span>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-[#212529] font-bold">{category.name}</span>
         </div>
       </section>
 
       {/* CATEGORY HERO DESCRIPTION */}
-      <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-b border-[#0f2545]/40 pb-12">
-        <div className="space-y-6">
-          <span className="text-xs font-bold text-[#d4a574] tracking-widest uppercase block">
-            B2B Garment Catalog
-          </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
-            Wholesale {category.name}
+      <section className="max-w-[95%] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center border-b border-gray-100 pb-20 mb-20">
+        <div className="space-y-8">
+          <h1 className="text-3xl md:text-5xl font-light text-[#212529] font-heading tracking-[0.2em] uppercase">
+            {category.name}
           </h1>
           {category.description && (
-            <div className="text-slate-400 text-sm leading-relaxed prose prose-invert max-w-none">
+            <div className="text-gray-500 text-sm leading-[1.8] font-light max-w-xl">
               {category.description}
             </div>
           )}
-          <div className="pt-2">
+          <div className="pt-4">
             <Link
               href="/request-for-quotation"
-              className="inline-flex bg-[#d4a574] hover:bg-[#c29463] text-[#040d1a] font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl items-center justify-center gap-2 shadow-lg transition-premium cursor-pointer"
+              className="inline-flex items-center gap-2 text-[11px] font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026] transition-colors pb-1 border-b border-transparent hover:border-[#d12026]"
             >
-              Request Quote for {category.name} <ArrowRight className="w-4 h-4" />
+              Request Quote <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>
 
-        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#0f2545] bg-[#081a33] shadow-2xl">
+        <div className="relative aspect-[4/3] bg-[#f8f9fa]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={category.heroImage || "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&h=500&fit=crop"}
+            src={category.heroImage || "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&h=600&fit=crop"}
             alt={category.name}
             className="w-full h-full object-cover"
           />
@@ -95,44 +92,40 @@ export default async function PublicCategoryProductsPage({ params }: CategoryPag
       </section>
 
       {/* PRODUCTS CATALOG LISTING GRID */}
-      <section className="max-w-7xl mx-auto px-6 space-y-10">
-        <h2 className="text-xl md:text-2xl font-bold text-white font-heading flex items-center gap-2 border-b border-[#0f2545]/40 pb-3">
-          <ShoppingBag className="w-5 h-5 text-[#d4a574]" /> Custom Product silhouettes
+      <section className="max-w-[95%] mx-auto px-6 space-y-12">
+        <h2 className="text-xl md:text-2xl font-light text-[#212529] font-heading tracking-[0.2em] uppercase text-center mb-16">
+          Products
         </h2>
 
         {products.length === 0 ? (
-          <div className="text-center py-16 bg-[#081a33]/10 border border-[#0f2545]/40 rounded-2xl">
-            <p className="text-slate-500 text-sm">No standard product specs listed under this catalog yet.</p>
-            <Link href="/request-for-quotation" className="text-xs text-[#d4a574] hover:underline mt-2 inline-block">
-              Send us custom blueprints to begin custom sampling →
-            </Link>
+          <div className="text-center py-16">
+            <p className="text-gray-400 text-sm font-light uppercase tracking-widest">No products listed.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {products.map((prod) => {
-              const cover = prod.images?.[0]?.url || "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&h=375&fit=crop";
+              const cover = prod.images?.[0]?.url || "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400&h=500&fit=crop";
               return (
                 <Link
                   key={prod.id}
                   href={`/products/${category.slug}/${prod.slug}`}
-                  className="bg-[#081a33]/20 border border-[#0f2545]/50 hover:border-[#d4a574]/40 rounded-2xl overflow-hidden group shadow-md transition-premium block"
+                  className="group block"
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#040d1a]">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#f8f9fa] mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={cover}
                       alt={prod.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-premium"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-5 space-y-2 bg-[#081a33]/10">
-                    <h4 className="font-bold text-white font-heading text-sm line-clamp-1 group-hover:text-[#d4a574] transition-premium">
+                  <div className="space-y-2 text-center">
+                    <h4 className="font-light text-[#212529] font-heading text-sm uppercase tracking-[0.1em] group-hover:text-[#d12026] transition-colors">
                       {prod.name}
                     </h4>
-                    <div className="flex items-center justify-between text-[9px] text-slate-500 font-semibold uppercase tracking-wider">
-                      <span>MOQ: {prod.moq || "500 pcs"}</span>
-                      <span className="text-[#d4a574]">Inspect Specs →</span>
-                    </div>
+                    <p className="text-[10px] text-gray-500 font-medium uppercase tracking-widest">
+                      MOQ: {prod.moq || "500 pcs"}
+                    </p>
                   </div>
                 </Link>
               );

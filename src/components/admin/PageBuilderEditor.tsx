@@ -288,10 +288,10 @@ export default function PageBuilderEditor({ pageId }: PageBuilderEditorProps) {
         label: "Contact Card",
         category: "B2B Manufacturer Blocks",
         content: `<div style="background: #081a33; border: 1px solid #0f2545; border-radius: 20px; padding: 30px; margin: 20px 0; width: 100%; max-width: 450px; font-family: sans-serif;">
-          <h3 style="color: #ffffff; font-weight: 800; font-size: 20px; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #0f2545; padding-bottom: 10px;">Texasia Dhaka HQ</h3>
+          <h3 style="color: #ffffff; font-weight: 800; font-size: 20px; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #0f2545; padding-bottom: 10px;">QSA Apparels Dhaka HQ</h3>
           <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 12px;">📍 Mirpur DOHS, House 45, Road 12, Dhaka, Bangladesh</p>
           <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 12px;">📞 +88 017 367 55 829</p>
-          <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 20px;">✉️ rony@texasia.com</p>
+          <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 20px;">✉️ wasi@qsaapparels.com</p>
           <div style="display: flex; gap: 12px;">
             <a href="#" style="background: #0b2545; color: #d4a574; font-weight: bold; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 11px;">LinkedIn</a>
             <a href="#" style="background: #0b2545; color: #d4a574; font-weight: bold; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 11px;">Facebook</a>

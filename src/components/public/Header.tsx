@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { Menu, X, ChevronDown, ShoppingBag, Globe, ArrowRight } from "lucide-react";
+import { Menu, X, ShoppingBag, ArrowRight } from "lucide-react";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,27 +14,18 @@ export default function Header() {
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
 
-  // Monitor scroll for header background opacity
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menus on page transition
   useEffect(() => {
     setIsOpen(false);
     setAboutDropdownOpen(false);
     setProductsDropdownOpen(false);
   }, [pathname]);
 
-  // Fetch active categories for megamenu
   const { data: categories = [] } = useQuery<any[]>({
     queryKey: ["publicCategories"],
     queryFn: async () => {
@@ -46,257 +37,191 @@ export default function Header() {
   });
 
   const aboutLinks = [
-    { name: "Company Profile", href: "/profile" },
-    { name: "Why Choose Us", href: "/why-choose-us" },
-    { name: "Sustainability", href: "/sustainability" },
-    { name: "Accreditation", href: "/accreditation" },
-    { name: "Memberships", href: "/membership" },
+    { name: "COMPANY PROFILE", href: "/profile" },
+    { name: "WHY TEXASIA", href: "/why-choose-us" },
+    { name: "SUSTAINABILITY", href: "/sustainability" },
+    { name: "ACCREDITATION", href: "/accreditation" },
+    { name: "MEMBERSHIPS", href: "/membership" },
   ];
-
-  const isHome = pathname === "/";
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-premium ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#040d1a] border-b border-[#0f2545]/50 shadow-lg py-3"
-          : isHome
-          ? "bg-transparent py-5"
-          : "bg-[#040d1a] border-b border-[#0f2545]/50 py-5"
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-4"
+          : "bg-white/95 backdrop-blur-md py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-[95%] mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <img src="/logo.jpeg" alt="QSA Apparels Logo" className="h-10 w-auto rounded-md bg-white object-contain" />
-          <div className="flex flex-col">
-            <span className="font-bold text-white font-heading text-sm tracking-tight leading-none">QSA</span>
-            <span className="text-[9px] text-[#d4a574] tracking-widest font-black uppercase mt-0.5">Apparels</span>
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-full bg-[#d12026] flex items-center justify-center text-white font-heading font-light text-xl">
+            T
           </div>
+          <span className="hidden sm:block font-heading text-[#212529] text-xs tracking-[0.3em] uppercase">QSA Apparels</span>
         </Link>
 
         {/* Desktop navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          <Link
-            href="/"
-            className={`text-sm font-semibold transition-premium hover:text-[#d4a574] ${
-              pathname === "/" ? "text-[#d4a574]" : "text-slate-200"
-            }`}
-          >
-            Home
+        <nav className="hidden lg:flex items-center gap-10">
+          <Link href="/" className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest transition-colors">
+            HOME
           </Link>
-
-          {/* About Dropdown */}
-          <div className="relative">
+          <Link href="/ceo-profile" className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest transition-colors">
+            CEO PROFILE
+          </Link>
+          <div 
+            className="relative"
+            onMouseEnter={() => setAboutDropdownOpen(true)}
+            onMouseLeave={() => setAboutDropdownOpen(false)}
+          >
             <button
-              onMouseEnter={() => setAboutDropdownOpen(true)}
-              onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
-              className="flex items-center gap-1 text-sm font-semibold text-slate-200 hover:text-[#d4a574] transition-premium focus:outline-none cursor-pointer"
+              className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest flex items-center gap-1 transition-colors cursor-pointer py-6"
             >
-              About Us <ChevronDown className="w-4 h-4" />
+              ABOUT
             </button>
             {aboutDropdownOpen && (
-              <div
-                onMouseLeave={() => setAboutDropdownOpen(false)}
-                className="absolute top-full left-0 mt-2 w-52 bg-[#081a33] border border-[#0f2545] rounded-xl overflow-hidden shadow-2xl p-2 animate-in fade-in duration-200"
-              >
-                {aboutLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`block px-4 py-2 text-xs font-semibold rounded-lg hover:bg-[#d4a574] hover:text-[#040d1a] transition-premium ${
-                      pathname === link.href ? "bg-[#d4a574] text-[#040d1a]" : "text-slate-300"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Products mega menu dropdown */}
-          <div className="relative" onMouseLeave={() => {
-            setProductsDropdownOpen(false);
-            setActiveCategoryId(null);
-          }}>
-            <Link
-              href="/products"
-              onMouseEnter={() => setProductsDropdownOpen(true)}
-              className="flex items-center gap-1 text-sm font-semibold text-slate-200 hover:text-[#d4a574] transition-premium focus:outline-none cursor-pointer"
-            >
-              PRODUCTS <ChevronDown className="w-4 h-4" />
-            </Link>
-            {productsDropdownOpen && (
-              <div
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-white text-[#040d1a] border border-gray-200 shadow-2xl flex animate-in fade-in duration-200 rounded-xl overflow-hidden"
-              >
-                {/* Left Sidebar: Main Categories */}
-                <div className="w-1/3 border-r border-gray-200 bg-gray-50 flex flex-col py-2 max-h-[450px] overflow-y-auto">
-                  {categories.map((cat: any) => (
+              <div className="absolute top-[calc(100%-15px)] left-0 pt-4 w-56 animate-in fade-in duration-200">
+                <div className="bg-white border border-[#e9ecef] shadow-lg p-2">
+                  {aboutLinks.map((link) => (
                     <Link
-                      key={cat.id}
-                      href={`/products/${cat.slug}`}
-                      onMouseEnter={() => setActiveCategoryId(cat.id)}
-                      className={`px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-between group ${
-                        activeCategoryId === cat.id ? "bg-[#fdeaea] text-[#e63946]" : "text-gray-700 hover:bg-gray-100"
-                      }`}
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-3 text-[10px] font-medium tracking-widest text-[#212529] hover:bg-[#f8f9fa] hover:text-[#d12026] transition-colors"
                     >
-                      {cat.name}
-                      {(cat.children?.length > 0 || cat.products?.length > 0) && (
-                        <ArrowRight className={`w-3 h-3 ${activeCategoryId === cat.id ? "text-[#e63946]" : "text-gray-400 group-hover:text-gray-700"}`} />
-                      )}
+                      {link.name}
                     </Link>
                   ))}
                 </div>
-                
-                {/* Right Pane: Subcategories or Products */}
-                <div className="w-2/3 p-6 bg-white max-h-[450px] overflow-y-auto min-h-[300px]">
-                  {categories.find((c: any) => c.id === activeCategoryId)?.children?.length > 0 ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Subcategories</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-                        {categories.find((c: any) => c.id === activeCategoryId)?.children?.map((subCat: any) => (
-                          <Link
-                            key={subCat.id}
-                            href={`/products/${subCat.slug}`}
-                            className="text-sm font-medium text-gray-600 hover:text-[#e63946] transition-colors"
-                          >
-                            {subCat.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : categories.find((c: any) => c.id === activeCategoryId)?.products?.length > 0 ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Products (A-Z)</span>
-                        <Link
-                          href={`/products/${categories.find((c: any) => c.id === activeCategoryId)?.slug}`}
-                          className="text-xs font-bold text-[#e63946] hover:underline"
-                        >
-                          View All
-                        </Link>
-                      </div>
-                      <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-                        {categories.find((c: any) => c.id === activeCategoryId)?.products?.map((prod: any) => (
-                          <Link
-                            key={prod.id}
-                            href={`/products/${categories.find((c: any) => c.id === activeCategoryId)?.slug}/${prod.slug}`}
-                            className="text-sm font-medium text-gray-600 hover:text-[#e63946] transition-colors"
-                          >
-                            {prod.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : activeCategoryId ? (
-                    <div className="h-full flex flex-col items-center justify-center text-gray-400">
-                      <ShoppingBag className="w-10 h-10 mb-2 opacity-50" />
-                      <p className="text-sm font-medium">Click to view all {categories.find((c: any) => c.id === activeCategoryId)?.name}</p>
-                    </div>
-                  ) : (
-                    <div className="h-full flex flex-col items-center justify-center text-gray-400">
-                      <p className="text-sm font-medium">Hover over a category to see more</p>
-                    </div>
-                  )}
+              </div>
+            )}
+          </div>
+
+          <div 
+            className="relative" 
+            onMouseEnter={() => setProductsDropdownOpen(true)}
+            onMouseLeave={() => {
+              setProductsDropdownOpen(false);
+              setActiveCategoryId(null);
+            }}
+          >
+            <Link
+              href="/products"
+              className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest flex items-center gap-1 transition-colors cursor-pointer py-6"
+            >
+              PRODUCT
+            </Link>
+            {/* Products Dropdown (Minimal light version) */}
+            {productsDropdownOpen && (
+              <div className="absolute top-[calc(100%-15px)] left-1/2 -translate-x-1/2 pt-4 w-[600px] animate-in fade-in duration-200">
+                <div className="bg-white border border-[#e9ecef] shadow-xl flex">
+                  <div className="w-1/3 border-r border-[#e9ecef] bg-[#f8f9fa] flex flex-col py-2">
+                    {categories.map((cat: any) => (
+                      <Link
+                        key={cat.id}
+                        href={`/products/${cat.slug}`}
+                        onMouseEnter={() => setActiveCategoryId(cat.id)}
+                        className={`px-6 py-3 text-[10px] font-medium uppercase tracking-widest transition-colors flex items-center justify-between ${
+                          activeCategoryId === cat.id ? "bg-white text-[#d12026]" : "text-[#212529] hover:bg-white"
+                        }`}
+                      >
+                        {cat.name}
+                        {(cat.children?.length > 0 || cat.products?.length > 0) && (
+                          <ArrowRight className={`w-3 h-3 ${activeCategoryId === cat.id ? "text-[#d12026]" : "text-gray-300"}`} />
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="w-2/3 p-6 bg-white max-h-[400px] overflow-y-auto">
+                    {(() => {
+                      const activeCat = categories.find((c: any) => c.id === activeCategoryId);
+                      if (!activeCat) {
+                        return (
+                          <div className="h-full flex items-center justify-center text-[#6c757d]">
+                            <p className="text-[10px] tracking-widest uppercase">Select a category</p>
+                          </div>
+                        );
+                      }
+
+                      if (activeCat.products?.length > 0) {
+                        return (
+                          <div className="grid grid-cols-2 gap-4">
+                            {activeCat.products.map((product: any) => (
+                              <Link key={product.id} href={`/products/${activeCat.slug}/${product.slug}`} className="text-[11px] text-[#6c757d] hover:text-[#d12026] tracking-wider leading-relaxed">
+                                {product.name}
+                              </Link>
+                            ))}
+                          </div>
+                        );
+                      }
+
+                      if (activeCat.children?.length > 0) {
+                        return (
+                          <div className="grid grid-cols-2 gap-4">
+                            {activeCat.children.map((subCat: any) => (
+                              <Link key={subCat.id} href={`/products/${subCat.slug}`} className="text-[11px] text-[#6c757d] hover:text-[#d12026] tracking-wider uppercase">
+                                {subCat.name}
+                              </Link>
+                            ))}
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div className="h-full flex flex-col items-center justify-center text-[#6c757d]">
+                          <ShoppingBag className="w-8 h-8 mb-2 opacity-20" />
+                          <p className="text-[10px] tracking-widest uppercase">Click to view category</p>
+                        </div>
+                      );
+                    })()}
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
-          <Link
-            href="/news"
-            className={`text-sm font-semibold transition-premium hover:text-[#d4a574] ${
-              pathname.startsWith("/news") ? "text-[#d4a574]" : "text-slate-200"
-            }`}
-          >
-            Insights
+          <Link href="/news" className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest transition-colors">
+            INSIGHTS
           </Link>
-
-          <Link
-            href="/career"
-            className={`text-sm font-semibold transition-premium hover:text-[#d4a574] ${
-              pathname.startsWith("/career") ? "text-[#d4a574]" : "text-slate-200"
-            }`}
-          >
-            Careers
-          </Link>
-
-          <Link
-            href="/contact"
-            className={`text-sm font-semibold transition-premium hover:text-[#d4a574] ${
-              pathname === "/contact" ? "text-[#d4a574]" : "text-slate-200"
-            }`}
-          >
-            Contact
+          <Link href="/career" className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest transition-colors">
+            CAREERS
           </Link>
         </nav>
 
-        {/* CTA Get Quote button */}
+        {/* CTA */}
         <div className="hidden lg:block">
-          <Link
-            href="/request-for-quotation"
-            className="bg-[#d4a574] hover:bg-[#c29463] text-[#040d1a] font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-lg transition-premium cursor-pointer"
-          >
-            <Globe className="w-4 h-4" /> Get Quote
+          <Link href="/contact" className="text-[11px] font-medium text-[#212529] hover:text-[#d12026] uppercase tracking-widest transition-colors">
+            + CONTACT US
           </Link>
         </div>
 
         {/* Mobile menu trigger */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-slate-300 hover:text-white p-1 rounded-lg hover:bg-[#0b2545] cursor-pointer"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-[#212529]">
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed inset-y-0 right-0 w-64 bg-[#081a33] border-l border-[#0f2545] z-50 p-6 flex flex-col justify-between animate-in slide-in-from-right duration-200 lg:hidden">
-          <div className="space-y-6">
-            <div className="flex items-center justify-between border-b border-[#0f2545] pb-4">
-              <span className="font-bold text-white font-heading">Menu</span>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-slate-400 hover:text-white focus:outline-none cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
+        <div className="fixed inset-y-0 right-0 w-64 bg-white border-l border-[#e9ecef] shadow-2xl z-50 p-6 flex flex-col lg:hidden animate-in slide-in-from-right duration-200">
+          <div className="flex justify-end mb-8">
+            <button onClick={() => setIsOpen(false)} className="text-[#212529]">
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          <nav className="flex flex-col gap-6">
+            <Link href="/" className="text-xs font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026]">HOME</Link>
+            <Link href="/ceo-profile" className="text-xs font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026]">CEO PROFILE</Link>
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] tracking-widest uppercase text-[#d12026]">ABOUT</span>
+              {aboutLinks.map(link => (
+                <Link key={link.href} href={link.href} className="text-xs font-medium tracking-widest uppercase text-[#6c757d] hover:text-[#d12026] pl-2">{link.name}</Link>
+              ))}
             </div>
-
-            <nav className="flex flex-col gap-4 text-sm font-semibold text-slate-300">
-              <Link href="/" className="hover:text-[#d4a574] transition-premium">Home</Link>
-              
-              {/* Mobile About links */}
-              <div className="space-y-2 border-y border-[#0f2545] py-2">
-                <span className="text-[10px] uppercase tracking-wider text-[#d4a574] font-bold">About Us</span>
-                {aboutLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="block pl-3 text-xs font-medium hover:text-white transition-premium">
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile Products links */}
-              <Link href="/products" className="hover:text-[#d4a574] transition-premium">Products</Link>
-              <Link href="/news" className="hover:text-[#d4a574] transition-premium">Insights</Link>
-              <Link href="/career" className="hover:text-[#d4a574] transition-premium">Careers</Link>
-              <Link href="/contact" className="hover:text-[#d4a574] transition-premium">Contact</Link>
-            </nav>
-          </div>
-
-          <div>
-            <Link
-              href="/request-for-quotation"
-              className="w-full bg-[#d4a574] hover:bg-[#c29463] text-[#040d1a] font-bold text-xs uppercase tracking-wider py-3 rounded-xl flex items-center justify-center gap-1.5 shadow-lg transition-premium cursor-pointer"
-            >
-              <Globe className="w-4 h-4" /> Get Quote
-            </Link>
-          </div>
+            <Link href="/products" className="text-xs font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026]">PRODUCTS</Link>
+            <Link href="/news" className="text-xs font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026]">INSIGHTS</Link>
+            <Link href="/career" className="text-xs font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026]">CAREERS</Link>
+            <Link href="/contact" className="text-xs font-medium tracking-widest uppercase text-[#212529] hover:text-[#d12026] mt-4 pt-4 border-t border-[#e9ecef]">+ CONTACT US</Link>
+          </nav>
         </div>
       )}
     </header>

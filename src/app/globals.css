@@ -2,62 +2,61 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #212529;
   
-  --primary: #0b2545;
+  --primary: #d12026;
   --primary-foreground: #ffffff;
   
-  --accent: #d4a574;
-  --accent-foreground: #0b2545;
+  --accent: #f8f9fa;
+  --accent-foreground: #212529;
   
-  --muted: #f1f5f9;
-  --muted-foreground: #475569;
+  --muted: #f1f3f5;
+  --muted-foreground: #6c757d;
   
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #0b2545;
+  --border: #e9ecef;
+  --input: #e9ecef;
+  --ring: #d12026;
   
-  --radius: 0.5rem;
+  --radius: 0rem;
 }
 
 .dark {
-  --background: #040d1a;
-  --foreground: #f8fafc;
+  --background: #ffffff;
+  --foreground: #212529;
   
-  --primary: #c5cfde;
-  --primary-foreground: #040d1a;
+  --primary: #d12026;
+  --primary-foreground: #ffffff;
   
-  --accent: #d4a574;
-  --accent-foreground: #040d1a;
+  --accent: #f8f9fa;
+  --accent-foreground: #212529;
   
-  --muted: #081a33;
-  --muted-foreground: #94a3b8;
+  --muted: #f1f3f5;
+  --muted-foreground: #6c757d;
   
-  --border: #0f2545;
-  --input: #0f2545;
-  --ring: #c5cfde;
+  --border: #e9ecef;
+  --input: #e9ecef;
+  --ring: #d12026;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
-  --color-primary: #0b2545;
-  --color-primary-50: #e8ecf2;
-  --color-primary-100: #c5cfde;
-  --color-primary-500: #0b2545;
-  --color-primary-700: #081a33;
-  --color-primary-900: #040d1a;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   
-  --color-accent: #d4a574;
-  --color-accent-500: #d4a574;
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
   --font-sans: var(--font-inter), sans-serif;
-  --font-heading: var(--font-plus-jakarta-sans), sans-serif;
+  --font-heading: var(--font-outfit), sans-serif;
 }
 
 * {

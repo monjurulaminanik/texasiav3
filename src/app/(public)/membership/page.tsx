@@ -4,7 +4,7 @@ import React from "react";
 import StaticPageLayout from "@/components/public/StaticPageLayout";
 
 export const metadata = {
-  title: "Trade Memberships | Texasia International",
+  title: "Trade Memberships | QSA Apparels",
   description: "Official trade partnerships including BGMEA (Bangladesh Garment Manufacturers and Exporters Association) and BKMEA compliance standards.",
 };
 

@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 import FaqListContainer from "@/components/public/FaqListContainer";
 
 export const metadata = {
-  title: "B2B Sourcing FAQ | Texasia International",
+  title: "B2B Sourcing FAQ | QSA Apparels",
   description: "Find professional answers on custom apparel manufacturing MOQ thresholds, L/C payment methods, sampling timelines, and garment compliance audits.",
 };
 

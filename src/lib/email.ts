@@ -48,11 +48,11 @@ export async function sendMail({ to, subject, html }: SendMailOptions) {
 export async function sendTestEmail(targetEmail: string) {
   return sendMail({
     to: targetEmail,
-    subject: "Texasia CMS — SMTP Configuration test success!",
+    subject: "QSA Apparels CMS — SMTP Configuration test success!",
     html: `
       <div style="font-family: sans-serif; max-width: 600px; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px; background:#f8fafc;">
         <h2 style="color: #0b2545; font-size: 20px; border-bottom: 2px solid #d4a574; padding-bottom: 8px;">SMTP Test Success</h2>
-        <p>This is a verification email from your Texasia International administrative control panel.</p>
+        <p>This is a verification email from your QSA Apparels administrative control panel.</p>
         <p>Your SMTP mail configuration is fully functional and ready to deliver real-time RFQs and contact message alerts.</p>
         <div style="margin-top: 24px; font-size: 11px; color: #64748b;">
           This is an automated system email. Please do not reply directly.

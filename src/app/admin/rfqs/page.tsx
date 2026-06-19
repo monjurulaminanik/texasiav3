@@ -98,9 +98,9 @@ export default function AdminRfqsPage() {
 
   // Compile pre-filled professional mailto link
   const getMailtoLink = (rfq: RFQ) => {
-    const subject = encodeURIComponent(`Texasia Garment Sourcing Inquiry - Re: ${rfq.productType || "Garment Production"}`);
+    const subject = encodeURIComponent(`QSA Apparels Garment Sourcing Inquiry - Re: ${rfq.productType || "Garment Production"}`);
     const body = encodeURIComponent(
-      `Dear ${rfq.contactName},\n\nThank you for reaching out to Texasia International Fashion Co., Ltd.\n\nWe have received your RFQ for ${rfq.quantity || "bulk"} pieces of ${rfq.productType || "garments"} targeting ${rfq.targetPrice || "competitive"} price points.\n\nOur merchandising team in Dhaka is currently evaluating your design specifications and sourcing details. We will prepare a detailed quotation sheet with estimated shipping/freight options shortly.\n\nTo help us expedite the process, could you please supply:\n1. Any detailed tech packs or design CAD drafts?\n2. Desired fabric weight (GSM) and composition?\n\nLooking forward to a mutually beneficial partnership.\n\nBest regards,\nTexasia Merchandising Team\nMirpur DOHS, Dhaka, Bangladesh\nwww.texasiafashion.com`
+      `Dear ${rfq.contactName},\n\nThank you for reaching out to QSA Apparels\n\nWe have received your RFQ for ${rfq.quantity || "bulk"} pieces of ${rfq.productType || "garments"} targeting ${rfq.targetPrice || "competitive"} price points.\n\nOur merchandising team in Dhaka is currently evaluating your design specifications and sourcing details. We will prepare a detailed quotation sheet with estimated shipping/freight options shortly.\n\nTo help us expedite the process, could you please supply:\n1. Any detailed tech packs or design CAD drafts?\n2. Desired fabric weight (GSM) and composition?\n\nLooking forward to a mutually beneficial partnership.\n\nBest regards,\nQSA Apparels Merchandising Team\nMirpur DOHS, Dhaka, Bangladesh\nwww.qsaapparels.com`
     );
     return `mailto:${rfq.email}?subject=${subject}&body=${body}`;
   };

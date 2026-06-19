@@ -94,7 +94,7 @@ export default function AdminContactsPage() {
   const getMailtoLink = (msg: ContactMessage) => {
     const subject = encodeURIComponent(`Re: ${msg.subject || "Garment Sourcing Inquiry"}`);
     const body = encodeURIComponent(
-      `Dear ${msg.name},\n\nThank you for reaching out to Texasia International Fashion Co., Ltd.\n\nWe have received your message regarding: "${msg.subject || "Garment Sourcing Inquiry"}".\n\nOur client relations team in Dhaka has reviewed your inquiry:\n"${msg.message}"\n\nOne of our sourcing experts will follow up with you shortly. If this is an urgent matter, please feel free to reach out to us via WhatsApp at +8801712345678.\n\nBest regards,\nTexasia Sourcing & Sourcing Partner\nwww.texasiafashion.com`
+      `Dear ${msg.name},\n\nThank you for reaching out to QSA Apparels\n\nWe have received your message regarding: "${msg.subject || "Garment Sourcing Inquiry"}".\n\nOur client relations team in Dhaka has reviewed your inquiry:\n"${msg.message}"\n\nOne of our sourcing experts will follow up with you shortly. If this is an urgent matter, please feel free to reach out to us via WhatsApp at +8801712345678.\n\nBest regards,\nQSA Apparels Sourcing & Sourcing Partner\nwww.qsaapparels.com`
     );
     return `mailto:${msg.email}?subject=${subject}&body=${body}`;
   };

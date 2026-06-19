@@ -81,7 +81,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
               </div>
             </div>
             <span className="font-bold text-white font-heading tracking-tight text-sm">
-              Texasia CMS
+              QSA Apparels CMS
             </span>
           </Link>
           <button

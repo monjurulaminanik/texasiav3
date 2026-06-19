@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
   if (!product) return {};
 
   return {
-    title: product.metaTitle || `${product.name} Wholesale Sourcing | Texasia`,
+    title: product.metaTitle || `${product.name} Wholesale Sourcing | QSA Apparels`,
     description: product.metaDesc || product.shortDesc || `Wholesale certified ${product.name}.`,
   };
 }
@@ -73,7 +73,7 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
     "sku": product.id,
     "brand": {
       "@type": "Brand",
-      "name": "Texasia International Fashion Co., Ltd."
+      "name": "QSA Apparels"
     },
     "offers": {
       "@type": "AggregateOffer",
@@ -87,7 +87,7 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
 
   if (product.isBuilderPage && product.gjsHtml) {
     return (
-      <div className="pt-28 pb-10 min-h-screen bg-[#040d1a]">
+      <div className="pt-28 pb-10 min-h-screen bg-white">
         {/* JSON-LD Structured Data Injection */}
         <script
           type="application/ld+json"
@@ -100,7 +100,7 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
   }
 
   return (
-    <div className="pt-28 pb-20 space-y-12">
+    <div className="bg-white min-h-screen pt-40 pb-20">
       {/* JSON-LD Structured Data Injection */}
       <script
         type="application/ld+json"
@@ -108,80 +108,68 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
       />
 
       {/* BREADCRUMBS STRIP */}
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center flex-wrap gap-2 text-xs text-slate-500 font-semibold uppercase tracking-wider">
-          <Link href="/" className="hover:text-white flex items-center gap-1">
-            <Home className="w-3.5 h-3.5" /> Home
+      <section className="max-w-[95%] mx-auto px-6 mb-12">
+        <div className="flex items-center flex-wrap gap-2 text-[10px] text-gray-400 font-medium uppercase tracking-widest">
+          <Link href="/" className="hover:text-[#212529] flex items-center gap-1 transition-colors">
+            <Home className="w-3 h-3" /> Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/products" className="hover:text-white">
-            Products
+          <ChevronRight className="w-3 h-3" />
+          <Link href="/products" className="hover:text-[#212529] transition-colors">
+            Catalogs
           </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href={`/products/${product.category.slug}`} className="hover:text-white">
+          <ChevronRight className="w-3 h-3" />
+          <Link href={`/products/${product.category.slug}`} className="hover:text-[#212529] transition-colors">
             {product.category.name}
           </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-[#d4a574] font-bold">{product.name}</span>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-[#212529] font-bold">{product.name}</span>
         </div>
       </section>
 
       {/* TWO-COLUMN DETAILS LAYOUT */}
-      <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <section className="max-w-[95%] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         {/* Left Column: Product Interactive Gallery */}
         <ProductGallery images={product.images} productName={product.name} />
 
         {/* Right Column: Spec & CTA details */}
-        <div className="space-y-8">
-          <div className="space-y-3">
-            <span className="text-xs font-bold text-[#d4a574] tracking-widest uppercase block">
-              Certified Premium Spec
-            </span>
-            <h1 className="text-3xl font-extrabold text-white font-heading tracking-tight leading-tight">
+        <div className="space-y-10">
+          <div className="space-y-4">
+            <h1 className="text-3xl font-light text-[#212529] font-heading tracking-[0.2em] uppercase">
               {product.name}
             </h1>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-gray-500 text-sm leading-[1.8] font-light max-w-xl">
               {product.shortDesc || "Premium readymade garment compiled to precise international compliance safety standards."}
             </p>
           </div>
 
           {/* Quick specs grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#081a33]/40 border border-[#0f2545]/60 rounded-xl p-4">
-            <div className="flex items-start gap-2.5">
-              <ShieldCheck className="w-5 h-5 text-[#d4a574] shrink-0 mt-0.5" />
-              <div>
-                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest block">Min Order (MOQ)</span>
-                <span className="text-xs text-slate-200 font-semibold">{product.moq || "500 pieces"}</span>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Min Order (MOQ)</span>
+              <span className="text-xs text-[#212529]">{product.moq || "500 pieces"}</span>
             </div>
 
-            <div className="flex items-start gap-2.5 border-t sm:border-t-0 sm:border-l border-[#0f2545]/50 pt-3 sm:pt-0 sm:pl-4">
-              <Clock className="w-5 h-5 text-[#d4a574] shrink-0 mt-0.5" />
-              <div>
-                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest block">Est. Lead Time</span>
-                <span className="text-xs text-slate-200 font-semibold">{product.leadTime || "30-45 Days"}</span>
-              </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Est. Lead Time</span>
+              <span className="text-xs text-[#212529]">{product.leadTime || "30-45 Days"}</span>
             </div>
 
-            <div className="flex items-start gap-2.5 border-t sm:border-t-0 sm:border-l border-[#0f2545]/50 pt-3 sm:pt-0 sm:pl-4">
-              <Layers className="w-5 h-5 text-[#d4a574] shrink-0 mt-0.5" />
-              <div>
-                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest block">Fabric Details</span>
-                <span className="text-xs text-slate-200 font-semibold truncate block max-w-[120px]">{product.fabric || "Cotton Knit"}</span>
-              </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Fabric</span>
+              <span className="text-xs text-[#212529] truncate">{product.fabric || "Cotton Knit"}</span>
             </div>
           </div>
 
           {/* Bullet features list */}
           {features.length > 0 && (
-            <div className="space-y-3">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block">
-                Specification Highlights
+            <div className="space-y-4 pt-6 border-t border-gray-100">
+              <span className="text-[10px] text-[#212529] font-medium uppercase tracking-widest block">
+                Highlights
               </span>
-              <ul className="space-y-2 text-xs text-slate-300">
+              <ul className="space-y-3 text-xs text-gray-500 font-light leading-[1.8]">
                 {features.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <Star className="w-3.5 h-3.5 text-[#d4a574] shrink-0 fill-[#d4a574] mt-0.5" />
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#d12026] mt-1.5 shrink-0" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -190,13 +178,13 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
           )}
 
           {/* Sizes & Colors tags */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-[#0f2545]/40">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-gray-100">
             {product.sizes && (
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Standard Sizes</span>
-                <div className="flex flex-wrap gap-1.5">
+              <div className="space-y-3">
+                <span className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">Sizes</span>
+                <div className="flex flex-wrap gap-2">
                   {product.sizes.split(",").map((s) => (
-                    <span key={s} className="bg-[#0b2545]/40 border border-[#0f2545]/60 text-slate-300 px-2 py-0.5 rounded text-[10px] font-semibold">
+                    <span key={s} className="border border-gray-200 text-gray-500 px-3 py-1 text-[10px] uppercase tracking-widest">
                       {s.trim()}
                     </span>
                   ))}
@@ -205,11 +193,11 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
             )}
 
             {product.colors && (
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Standard Colorways</span>
-                <div className="flex flex-wrap gap-1.5">
+              <div className="space-y-3">
+                <span className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">Colors</span>
+                <div className="flex flex-wrap gap-2">
                   {product.colors.split(",").map((c) => (
-                    <span key={c} className="bg-[#0b2545]/40 border border-[#0f2545]/60 text-slate-300 px-2 py-0.5 rounded text-[10px] font-semibold">
+                    <span key={c} className="border border-gray-200 text-gray-500 px-3 py-1 text-[10px] uppercase tracking-widest">
                       {c.trim()}
                     </span>
                   ))}
@@ -219,59 +207,60 @@ export default async function PublicProductDetailPage({ params }: ProductPagePro
           </div>
 
           {/* CTA Quote Request redirect button */}
-          <div className="pt-4">
+          <div className="pt-8">
             <Link
               href={`/request-for-quotation?productId=${product.id}&productType=${encodeURIComponent(product.name)}`}
-              className="w-full bg-[#d4a574] hover:bg-[#c29463] text-[#040d1a] font-bold uppercase tracking-wider py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:shadow-[#d4a574]/20 transition-premium cursor-pointer text-xs"
+              className="inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.2em] uppercase text-[#ffffff] bg-[#d12026] hover:bg-[#a5191f] transition-colors px-8 py-4"
             >
-              <Inbox className="w-4.5 h-4.5" /> Request Quote for {product.name}
+              Request Quote
             </Link>
           </div>
         </div>
       </section>
 
       {/* BOTTOM TABS / SPECIFICATIONS */}
-      <section className="max-w-7xl mx-auto px-6 border-t border-[#0f2545]/40 pt-12 space-y-6">
-        <h3 className="text-xl font-bold text-white font-heading border-b border-[#0f2545]/40 pb-3">
-          Manufacturing Specifications
-        </h3>
-        <div className="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed">
-          <div dangerouslySetInnerHTML={{ __html: product.description }} />
-        </div>
-      </section>
+      {product.description && product.description.trim() !== "" && (
+        <section className="max-w-[95%] mx-auto px-6 pt-24 mt-24 border-t border-gray-100 space-y-8">
+          <h3 className="text-lg font-light text-[#212529] font-heading tracking-[0.2em] uppercase">
+            Specifications
+          </h3>
+          <div className="prose max-w-none text-gray-500 text-sm leading-[2] font-light prose-headings:font-light prose-headings:text-[#212529] prose-headings:tracking-[0.1em] prose-a:text-[#d12026]">
+            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          </div>
+        </section>
+      )}
 
       {/* RELATED PRODUCTS */}
       {relatedProducts.length > 0 && (
-        <section className="max-w-7xl mx-auto px-6 border-t border-[#0f2545]/40 pt-16 space-y-10">
-          <h3 className="text-xl font-bold text-white font-heading">
-            Related Garment Options
+        <section className="max-w-[95%] mx-auto px-6 pt-24 mt-24 border-t border-gray-100 space-y-12">
+          <h3 className="text-lg font-light text-[#212529] font-heading tracking-[0.2em] uppercase">
+            Related
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {relatedProducts.map((prod) => {
-              const cover = prod.images?.[0]?.url || "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&h=375&fit=crop";
+              const cover = prod.images?.[0]?.url || "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400&h=500&fit=crop";
               return (
                 <Link
                   key={prod.id}
-                  href={`/products/${prod.categoryId}/${prod.slug}`}
-                  className="bg-[#081a33]/20 border border-[#0f2545]/50 hover:border-[#d4a574]/40 rounded-2xl overflow-hidden group shadow-md transition-premium block"
+                  href={`/products/${product.category.slug}/${prod.slug}`}
+                  className="group block"
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#040d1a]">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#f8f9fa] mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={cover}
                       alt={prod.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-premium"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-4 space-y-2 bg-[#081a33]/10">
-                    <h4 className="font-bold text-white font-heading text-xs truncate group-hover:text-[#d4a574] transition-premium">
+                  <div className="space-y-2 text-center">
+                    <h4 className="font-light text-[#212529] font-heading text-xs uppercase tracking-[0.1em] group-hover:text-[#d12026] transition-colors truncate">
                       {prod.name}
                     </h4>
-                    <div className="flex items-center justify-between text-[8px] text-slate-500 font-semibold uppercase tracking-wider">
-                      <span>MOQ: {prod.moq || "500 pcs"}</span>
-                      <span className="text-[#d4a574]">Inspect →</span>
-                    </div>
+                    <p className="text-[9px] text-gray-500 font-medium uppercase tracking-widest">
+                      MOQ: {prod.moq || "500 pcs"}
+                    </p>
                   </div>
                 </Link>
               );

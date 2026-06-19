@@ -75,7 +75,7 @@ function LoginForm() {
             </div>
           </div>
           <h1 className="text-2xl font-bold text-white font-heading tracking-tight">
-            Texasia CMS
+            QSA Apparels CMS
           </h1>
           <p className="text-slate-400 text-sm mt-1">
             Access your administrative control panel
@@ -93,7 +93,7 @@ function LoginForm() {
               <input
                 {...register("email")}
                 type="email"
-                placeholder="admin@texasia.local"
+                placeholder="admin@qsaapparels.local"
                 className="w-full bg-[#040d1a]/80 border border-[#0f2545] rounded-xl py-3 pl-10 pr-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-[#d4a574] focus:ring-1 focus:ring-[#d4a574] transition-premium"
                 disabled={isLoading}
               />
@@ -155,7 +155,7 @@ function LoginForm() {
         {/* Footer info */}
         <div className="text-center mt-8">
           <p className="text-xs text-slate-500">
-            For support contact admin@texasiafashion.com
+            For support contact admin@qsaapparels.com
           </p>
         </div>
       </div>

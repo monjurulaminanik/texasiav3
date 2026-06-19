@@ -4,7 +4,7 @@ import React from "react";
 import StaticPageLayout from "@/components/public/StaticPageLayout";
 
 export const metadata = {
-  title: "Accreditation & Compliance | Texasia International",
+  title: "Accreditation & Compliance | QSA Apparels",
   description: "Browse our factory compliance certifications: BSCI, SEDEX 4-Pillar, OEKO-TEX Standard 100, and WRAP gold-certified safety audits.",
 };
 

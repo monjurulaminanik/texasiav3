@@ -56,7 +56,7 @@ export default function AdminSettingsPage() {
       
       // Populate form defaults
       reset({
-        siteName: data.siteName || "Texasia Clone",
+        siteName: data.siteName || "QSA Apparels",
         tagline: data.tagline || "",
         logo: data.logo || "",
         favicon: data.favicon || "",
@@ -380,7 +380,7 @@ export default function AdminSettingsPage() {
                   <input
                     {...register("smtpFromName")}
                     type="text"
-                    placeholder="Texasia Alerts"
+                    placeholder="QSA Apparels Alerts"
                     className="w-full bg-[#040d1a]/80 border border-[#0f2545] rounded-xl py-2.5 px-4 text-white focus:outline-none focus:border-[#d4a574] transition-premium"
                   />
                 </div>

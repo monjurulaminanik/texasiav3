@@ -91,7 +91,7 @@ export default async function AdminDashboardPage() {
             Welcome back, {session.user?.name || "Admin"}!
           </h1>
           <p className="text-slate-400 text-sm mt-1">
-            Here's what is happening with Texasia International today.
+            Here's what is happening with QSA Apparels today.
           </p>
         </div>
         <div className="flex items-center gap-2 text-xs bg-[#d4a574]/10 text-[#d4a574] px-3 py-1.5 rounded-lg border border-[#d4a574]/20 font-semibold self-start md:self-auto">

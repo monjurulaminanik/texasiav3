@@ -24,10 +24,10 @@ export default function ShareButtons({ shareUrl, title }: ShareButtonsProps) {
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg bg-[#0b2545]/50 border border-[#0f2545] text-slate-400 hover:text-[#d4a574] hover:bg-[#0b2545] transition-premium"
+        className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-[#d12026] hover:border-[#d12026] bg-white transition-colors"
         title="LinkedIn Share"
       >
-        <Linkedin className="w-4.5 h-4.5" />
+        <Linkedin className="w-4 h-4" />
       </a>
 
       {/* Facebook */}
@@ -35,10 +35,10 @@ export default function ShareButtons({ shareUrl, title }: ShareButtonsProps) {
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg bg-[#0b2545]/50 border border-[#0f2545] text-slate-400 hover:text-[#d4a574] hover:bg-[#0b2545] transition-premium"
+        className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-[#d12026] hover:border-[#d12026] bg-white transition-colors"
         title="Facebook Share"
       >
-        <Facebook className="w-4.5 h-4.5" />
+        <Facebook className="w-4 h-4" />
       </a>
 
       {/* WhatsApp */}
@@ -46,16 +46,16 @@ export default function ShareButtons({ shareUrl, title }: ShareButtonsProps) {
         href={`https://wa.me/?text=${encodeURIComponent(`${title} - ${shareUrl}`)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg bg-[#0b2545]/50 border border-[#0f2545] text-slate-400 hover:text-emerald-400 hover:bg-[#0b2545] transition-premium"
+        className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-[#d12026] hover:border-[#d12026] bg-white transition-colors"
         title="WhatsApp Share"
       >
-        <Send className="w-4.5 h-4.5" />
+        <Send className="w-4 h-4" />
       </a>
 
       {/* Copy Link */}
       <button
         onClick={handleCopy}
-        className="p-2 rounded-lg bg-[#0b2545]/50 border border-[#0f2545] text-slate-400 hover:text-white hover:bg-[#0b2545] cursor-pointer transition-premium flex items-center gap-1.5"
+        className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-[#d12026] hover:border-[#d12026] bg-white transition-colors flex items-center justify-center relative w-10 h-10"
         title="Copy Link"
       >
         {copied ? (

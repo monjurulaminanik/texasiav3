@@ -214,7 +214,7 @@ export default function AdminJobsPage() {
             Manage Job Openings
           </h1>
           <p className="text-slate-400 text-sm mt-1">
-            Publish and curate active employment positions at Texasia.
+            Publish and curate active employment positions at QSA Apparels.
           </p>
         </div>
         <button

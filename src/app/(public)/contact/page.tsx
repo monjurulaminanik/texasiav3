@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  MessageSquare, 
-  User, 
-  AlertTriangle, 
-  CheckCircle, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageSquare,
+  User,
+  AlertTriangle,
+  CheckCircle,
   Loader2,
   Clock,
   Globe
@@ -77,38 +77,33 @@ export default function PublicContactPage() {
   };
 
   return (
-    <div className="pt-28 pb-20 max-w-7xl mx-auto px-6 space-y-12">
-      {/* Intro Banner */}
-      <section className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 bg-[#d4a574]/10 border border-[#d4a574]/30 px-3 py-1 rounded-full text-[10px] font-bold text-[#d4a574] uppercase tracking-wider">
-          📞 Direct B2B Communication
-        </div>
-        <h1 className="text-3xl md:text-5xl font-extrabold text-white font-heading tracking-tight">
-          Contact Our Global Sourcing Desk
+    <div className="bg-white min-h-screen pt-40 pb-20">
+      {/* SECTION 1: HERO CONTAINER (Centro Minimalist) */}
+      <section className="relative max-w-[95%] mx-auto px-6 border-b border-gray-100 pb-16 mb-16">
+        <h1 className="text-3xl md:text-5xl font-light text-[#212529] font-heading tracking-[0.2em] uppercase text-center mb-6">
+          CONTACT US
         </h1>
-        <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+        <p className="text-gray-500 text-sm text-center max-w-2xl mx-auto font-light leading-[1.8]">
           Connect with direct RMG manufacturers. Whether you require samples, auditing certifications, or specific fabric custom blends, our Dhaka office is standing by.
         </p>
       </section>
 
       {/* Main Grid Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+      <div className="max-w-[95%] mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
         {/* Left Column: Office Contacts Card info */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-[#081a33]/40 border border-[#0f2545]/60 rounded-3xl p-6 md:p-8 space-y-8">
-            <h3 className="text-white font-heading font-extrabold text-lg border-b border-[#0f2545]/50 pb-3 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-[#d4a574]" /> Headquarters & Merchandising Office
+        <div className="lg:col-span-2 space-y-12">
+          <div className="space-y-8">
+            <h3 className="text-[#212529] font-heading font-light tracking-[0.1em] text-lg uppercase border-b border-gray-100 pb-4">
+              Headquarters
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* Address */}
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-[#0b2545]/50 border border-[#0f2545] text-[#d4a574] mt-0.5">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div className="text-xs md:text-sm space-y-1">
-                  <h4 className="font-extrabold text-white">Office Address</h4>
-                  <p className="text-slate-300 leading-relaxed">
+                <MapPin className="w-4 h-4 text-[#d12026] mt-1 shrink-0" />
+                <div className="space-y-1 text-xs md:text-sm">
+                  <h4 className="font-medium text-[#212529] uppercase tracking-widest text-[10px]">Office Address</h4>
+                  <p className="text-gray-500 font-light leading-[1.8]">
                     House #12, Road #04, Sector #03,<br />
                     Uttara Model Town, Dhaka-1230,<br />
                     Bangladesh.
@@ -118,12 +113,10 @@ export default function PublicContactPage() {
 
               {/* Working Hours */}
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-[#0b2545]/50 border border-[#0f2545] text-[#d4a574] mt-0.5">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div className="text-xs md:text-sm space-y-1">
-                  <h4 className="font-extrabold text-white">Business Hours</h4>
-                  <p className="text-slate-300">
+                <Clock className="w-4 h-4 text-[#d12026] mt-1 shrink-0" />
+                <div className="space-y-1 text-xs md:text-sm">
+                  <h4 className="font-medium text-[#212529] uppercase tracking-widest text-[10px]">Business Hours</h4>
+                  <p className="text-gray-500 font-light leading-[1.8]">
                     Saturday – Thursday:<br />
                     9:00 AM – 6:00 PM (GMT +6)
                   </p>
@@ -132,29 +125,25 @@ export default function PublicContactPage() {
 
               {/* Phones */}
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-[#0b2545]/50 border border-[#0f2545] text-[#d4a574] mt-0.5">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div className="text-xs md:text-sm space-y-1">
-                  <h4 className="font-extrabold text-white">Phone Support</h4>
-                  <p className="text-slate-300 font-medium">
+                <Phone className="w-4 h-4 text-[#d12026] mt-1 shrink-0" />
+                <div className="space-y-1 text-xs md:text-sm">
+                  <h4 className="font-medium text-[#212529] uppercase tracking-widest text-[10px]">Phone</h4>
+                  <p className="text-gray-500 font-light leading-[1.8]">
                     Office Desk: +880-2-8959281<br />
-                    Mobile / WhatsApp: +880-1713-038234
+                    Mobile: +880-1713-038234
                   </p>
                 </div>
               </div>
 
               {/* Direct Emails */}
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-[#0b2545]/50 border border-[#0f2545] text-[#d4a574] mt-0.5">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div className="text-xs md:text-sm space-y-1">
-                  <h4 className="font-extrabold text-white">Email Addresses</h4>
-                  <p className="text-slate-300 font-semibold font-mono">
-                    General: info@texasiabd.com<br />
-                    Procurement: sourcing@texasiabd.com<br />
-                    Careers: hr@texasiabd.com
+                <Mail className="w-4 h-4 text-[#d12026] mt-1 shrink-0" />
+                <div className="space-y-1 text-xs md:text-sm">
+                  <h4 className="font-medium text-[#212529] uppercase tracking-widest text-[10px]">Email</h4>
+                  <p className="text-gray-500 font-light leading-[1.8]">
+                    General: info@qsaapparels.com<br />
+                    Procurement: sourcing@qsaapparels.com<br />
+                    Careers: hr@qsaapparels.com
                   </p>
                 </div>
               </div>
@@ -163,29 +152,27 @@ export default function PublicContactPage() {
         </div>
 
         {/* Right Column: Contact Form */}
-        <div className="lg:col-span-3 bg-[#081a33]/20 border border-[#0f2545]/50 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-radial-gradient from-[#d4a574]/5 via-transparent to-transparent pointer-events-none -z-10" />
-
+        <div className="lg:col-span-3 bg-[#f8f9fa] p-8 md:p-12">
           {submitSuccess ? (
-            <div className="text-center py-12 space-y-4 max-w-md mx-auto">
-              <div className="w-14 h-14 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-emerald-400">
+            <div className="text-center py-16 space-y-6 max-w-md mx-auto">
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto text-green-500">
                 <CheckCircle className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-extrabold text-white font-heading">
-                Message Sent Successfully!
+              <h3 className="text-xl font-light text-[#212529] font-heading tracking-[0.1em] uppercase">
+                Message Sent
               </h3>
-              <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-                Thank you for contacting Texasia International. Your inquiry has been forwarded to our support team and you will receive a response shortly.
+              <p className="text-gray-500 text-sm font-light leading-[1.8]">
+                Thank you for contacting QSA Apparels. Your inquiry has been forwarded to our support team and you will receive a response shortly.
               </p>
               <button
                 onClick={() => setSubmitSuccess(false)}
-                className="bg-[#d4a574] text-[#040d1a] font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-[#c39463] cursor-pointer transition-premium mt-4"
+                className="bg-[#212529] text-white font-medium text-[10px] uppercase tracking-widest px-6 py-3 hover:bg-[#d12026] transition-colors mt-8"
               >
                 Send Another Message
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Honeypot field for anti-spam */}
               <input
                 type="text"
@@ -197,130 +184,115 @@ export default function PublicContactPage() {
                 autoComplete="off"
               />
 
-              <div className="border-b border-[#0f2545]/30 pb-4">
-                <h3 className="text-white font-heading font-extrabold text-base">Inquiry Form</h3>
-                <p className="text-slate-400 text-[11px]">Fill out the details below and we will route it to the appropriate division.</p>
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="text-[#212529] font-heading font-light tracking-[0.1em] text-lg uppercase">Inquiry Form</h3>
+                <p className="text-gray-500 font-light text-xs mt-2">Fill out the details below and we will route it to the appropriate division.</p>
               </div>
 
               {submitError && (
-                <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-start gap-2 text-xs font-semibold">
-                  <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <div className="bg-red-50 text-red-500 p-4 text-xs font-medium uppercase tracking-widest flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
                   <span>{submitError}</span>
                 </div>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Full name */}
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                    Your Name <span className="text-red-500">*</span>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">
+                    Your Name <span className="text-[#d12026]">*</span>
                   </label>
-                  <div className="relative">
-                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Sarah Jenkins"
-                      className="w-full pl-10 pr-4 py-3 bg-[#040d1a]/50 border border-[#0f2545] rounded-xl text-xs md:text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#d4a574] transition-premium"
-                      required
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Jane Doe"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 text-sm text-[#212529] placeholder-gray-300 focus:outline-none focus:border-[#d12026] transition-colors font-light"
+                    required
+                  />
                 </div>
 
                 {/* Email address */}
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                    Email Address <span className="text-red-500">*</span>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">
+                    Email Address <span className="text-[#d12026]">*</span>
                   </label>
-                  <div className="relative">
-                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="sourcing@brand.com"
-                      className="w-full pl-10 pr-4 py-3 bg-[#040d1a]/50 border border-[#0f2545] rounded-xl text-xs md:text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#d4a574] transition-premium"
-                      required
-                    />
-                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="jane@example.com"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 text-sm text-[#212529] placeholder-gray-300 focus:outline-none focus:border-[#d12026] transition-colors font-light"
+                    required
+                  />
                 </div>
 
                 {/* Phone */}
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">
                     Phone Number
                   </label>
-                  <div className="relative">
-                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+1 (555) 012-3456"
-                      className="w-full pl-10 pr-4 py-3 bg-[#040d1a]/50 border border-[#0f2545] rounded-xl text-xs md:text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#d4a574] transition-premium"
-                    />
-                  </div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+1 (555) 012-3456"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 text-sm text-[#212529] placeholder-gray-300 focus:outline-none focus:border-[#d12026] transition-colors font-light"
+                  />
                 </div>
 
                 {/* Subject type */}
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">
                     Inquiry Subject
                   </label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4a574]" />
-                    <select
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 bg-[#040d1a]/50 border border-[#0f2545] rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#d4a574] cursor-pointer appearance-none transition-premium"
-                    >
-                      <option value="General Inquiry" className="bg-[#040d1a]">General Sourcing Inquiry</option>
-                      <option value="Sample Request" className="bg-[#040d1a]">Custom Sample Request</option>
-                      <option value="Audit Certification" className="bg-[#040d1a]">Auditing & Factory Compliance</option>
-                      <option value="Partnership Sourcing" className="bg-[#040d1a]">Strategic Supply Partnership</option>
-                      <option value="Feedback" className="bg-[#040d1a]">Website Feedback</option>
-                    </select>
-                  </div>
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-200 text-sm text-[#212529] focus:outline-none focus:border-[#d12026] cursor-pointer transition-colors font-light"
+                  >
+                    <option value="General Inquiry">General Sourcing Inquiry</option>
+                    <option value="Sample Request">Custom Sample Request</option>
+                    <option value="Audit Certification">Auditing & Factory Compliance</option>
+                    <option value="Partnership Sourcing">Strategic Supply Partnership</option>
+                    <option value="Feedback">Website Feedback</option>
+                  </select>
                 </div>
               </div>
 
               {/* Message */}
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                  Detailed Message <span className="text-red-500">*</span>
+              <div className="space-y-3">
+                <label className="text-[10px] font-medium text-gray-400 uppercase tracking-widest block">
+                  Detailed Message <span className="text-[#d12026]">*</span>
                 </label>
-                <div className="relative">
-                  <MessageSquare className="absolute left-3.5 top-4.5 w-4 h-4 text-slate-500" />
-                  <textarea
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Describe your manufacturing, auditing, or support needs in detail..."
-                    className="w-full pl-10 pr-4 py-3 bg-[#040d1a]/50 border border-[#0f2545] rounded-xl text-xs md:text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#d4a574] transition-premium"
-                    required
-                  />
-                </div>
+                <textarea
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Describe your manufacturing, auditing, or support needs in detail..."
+                  className="w-full px-4 py-3 bg-white border border-gray-200 text-sm text-[#212529] placeholder-gray-300 focus:outline-none focus:border-[#d12026] transition-colors font-light resize-none"
+                  required
+                />
               </div>
 
               {/* Submit */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 bg-[#d4a574] text-[#040d1a] hover:bg-[#c39463] disabled:opacity-50 py-3.5 rounded-xl cursor-pointer transition-premium text-xs md:text-sm font-bold"
+                className="w-full flex items-center justify-center gap-3 bg-[#212529] text-white hover:bg-[#d12026] disabled:opacity-50 py-4 transition-colors text-[11px] font-medium tracking-[0.2em] uppercase mt-4"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" /> Processing Transmission...
+                    <Loader2 className="w-4 h-4 animate-spin" /> Processing...
                   </>
                 ) : (
                   <>
-                    Transmit Inquiry Message <Send className="w-4 h-4" />
+                    Send Message <Send className="w-4 h-4" />
                   </>
                 )}
               </button>

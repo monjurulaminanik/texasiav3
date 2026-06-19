@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
-import PopupRfqForm from "@/components/public/PopupRfqForm";
 
 export default function PublicSiteLayout({
   children,
@@ -9,13 +8,12 @@ export default function PublicSiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#040d1a] text-slate-100">
+    <div className="min-h-screen flex flex-col justify-between bg-white text-[#212529]">
       <Header />
       <div className="flex-1">
         {children}
       </div>
       <Footer />
-      <PopupRfqForm />
     </div>
   );
 }
