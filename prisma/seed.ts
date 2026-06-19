@@ -9,10 +9,10 @@ async function main() {
   // 1. Seed Admin User
   const adminPasswordHash = await bcrypt.hash("ChangeMe123!", 12);
   const adminUser = await prisma.user.upsert({
-    where: { email: "admin@texasia.local" },
+    where: { email: "admin@qsaapparels.local" },
     update: {},
     create: {
-      email: "admin@texasia.local",
+      email: "admin@qsaapparels.local",
       password: adminPasswordHash,
       name: "Admin User",
       role: "admin",
@@ -22,10 +22,10 @@ async function main() {
 
   const readmeAdminPasswordHash = await bcrypt.hash("QSAAdmin2026!", 12);
   const readmeAdminUser = await prisma.user.upsert({
-    where: { email: "admin@texasiabd.com" },
+    where: { email: "admin@qsaapparels.com" },
     update: {},
     create: {
-      email: "admin@texasiabd.com",
+      email: "admin@qsaapparels.com",
       password: readmeAdminPasswordHash,
       name: "QSA Admin",
       role: "admin",
